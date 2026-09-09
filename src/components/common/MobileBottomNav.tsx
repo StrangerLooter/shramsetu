@@ -16,8 +16,7 @@ import {
   ShieldCheck, 
   Plus, 
   FileText, 
-  HeartHandshake,
-  User
+  HeartHandshake
 } from 'lucide-react';
 
 export const MobileBottomNav: React.FC = () => {
@@ -28,35 +27,34 @@ export const MobileBottomNav: React.FC = () => {
     switch (role) {
       case 'worker':
         return [
-          { href: '/worker/dashboard', label: language === 'hi' ? 'होम' : 'Home', icon: <Home className="w-5 h-5" /> },
-          { href: '/worker/jobs', label: language === 'hi' ? 'कार्य' : 'Jobs', icon: <HardHat className="w-5 h-5" /> },
-          { href: '/worker/earnings', label: language === 'hi' ? 'कमाई' : 'Earnings', icon: <Wallet className="w-5 h-5" /> },
-          { href: '/worker/welfare', label: language === 'hi' ? 'कल्याण' : 'Welfare', icon: <HeartHandshake className="w-5 h-5" /> },
+          { href: '/worker/dashboard', label: language === 'hi' ? 'होम' : 'Home', icon: <Home className="w-4.5 h-4.5" /> },
+          { href: '/worker/jobs', label: language === 'hi' ? 'कार्य' : 'Jobs', icon: <HardHat className="w-4.5 h-4.5" /> },
+          { href: '/worker/earnings', label: language === 'hi' ? 'कमाई' : 'Earnings', icon: <Wallet className="w-4.5 h-4.5" /> },
+          { href: '/worker/welfare', label: language === 'hi' ? 'कल्याण' : 'Welfare', icon: <HeartHandshake className="w-4.5 h-4.5" /> },
         ];
       case 'cooperative':
         return [
-          { href: '/cooperative/dashboard', label: language === 'hi' ? 'डैशबोर्ड' : 'Dashboard', icon: <Home className="w-5 h-5" /> },
-          { href: '/cooperative/allocation', label: language === 'hi' ? 'आवंटन' : 'Allocation', icon: <Scale className="w-5 h-5" /> },
-          { href: '/cooperative/workers', label: language === 'hi' ? 'श्रमिक' : 'Workers', icon: <Users className="w-5 h-5" /> },
-          { href: '/cooperative/voting', label: language === 'hi' ? 'मतदान' : 'Voting', icon: <Vote className="w-5 h-5" /> },
+          { href: '/cooperative/dashboard', label: language === 'hi' ? 'डैशबोर्ड' : 'Dashboard', icon: <Home className="w-4.5 h-4.5" /> },
+          { href: '/cooperative/allocation', label: language === 'hi' ? 'आवंटन' : 'Allocation', icon: <Scale className="w-4.5 h-4.5" /> },
+          { href: '/cooperative/workers', label: language === 'hi' ? 'श्रमिक' : 'Workers', icon: <Users className="w-4.5 h-4.5" /> },
+          { href: '/cooperative/voting', label: language === 'hi' ? 'मतदान' : 'Voting', icon: <Vote className="w-4.5 h-4.5" /> },
         ];
       case 'community':
         return [
-          { href: '/community/dashboard', label: language === 'hi' ? 'सोसायटी' : 'Society', icon: <Building2 className="w-5 h-5" /> },
-          { href: '/community/request', label: language === 'hi' ? 'अनुरोध' : 'Request', icon: <Plus className="w-5 h-5" /> },
+          { href: '/community/dashboard', label: language === 'hi' ? 'सोसायटी' : 'Society', icon: <Building2 className="w-4.5 h-4.5" /> },
+          { href: '/community/request', label: language === 'hi' ? 'अनुरोध' : 'Request', icon: <Plus className="w-4.5 h-4.5" /> },
         ];
       case 'admin':
         return [
-          { href: '/admin/dashboard', label: language === 'hi' ? 'डैशबोर्ड' : 'Dashboard', icon: <Home className="w-5 h-5" /> },
-          { href: '/admin/wage-compliance', label: language === 'hi' ? 'मजदूरी' : 'Wages', icon: <Scale className="w-5 h-5" /> },
-          { href: '/admin/disputes', label: language === 'hi' ? 'विवाद' : 'Disputes', icon: <FileText className="w-5 h-5" /> },
-          { href: '/admin/audit-logs', label: language === 'hi' ? 'ऑडिट' : 'Audit', icon: <ShieldCheck className="w-5 h-5" /> },
+          { href: '/admin/dashboard', label: language === 'hi' ? 'डैशबोर्ड' : 'Dashboard', icon: <Home className="w-4.5 h-4.5" /> },
+          { href: '/admin/wage-compliance', label: language === 'hi' ? 'मजदूरी' : 'Wages', icon: <Scale className="w-4.5 h-4.5" /> },
+          { href: '/admin/disputes', label: language === 'hi' ? 'विवाद' : 'Disputes', icon: <FileText className="w-4.5 h-4.5" /> },
         ];
       default: // Customer
         return [
-          { href: '/', label: language === 'hi' ? 'सेवाएं' : 'Home', icon: <Home className="w-5 h-5" /> },
-          { href: '/customer/request', label: language === 'hi' ? 'अनुरोध' : 'Request', icon: <Plus className="w-5 h-5" /> },
-          { href: '/customer/bookings', label: language === 'hi' ? 'बुकिंग' : 'Bookings', icon: <Calendar className="w-5 h-5" /> },
+          { href: '/', label: language === 'hi' ? 'सेवाएं' : 'Home', icon: <Home className="w-4.5 h-4.5" /> },
+          { href: '/customer/request', label: language === 'hi' ? 'अनुरोध' : 'Request', icon: <Plus className="w-4.5 h-4.5" /> },
+          { href: '/customer/bookings', label: language === 'hi' ? 'बुकिंग' : 'Bookings', icon: <Calendar className="w-4.5 h-4.5" /> },
         ];
     }
   };
@@ -64,7 +62,7 @@ export const MobileBottomNav: React.FC = () => {
   const navItems = getNavItems();
 
   return (
-    <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-border shadow-float py-1 px-2">
+    <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#FBF9F5]/95 backdrop-blur-md border-t border-[rgba(18,19,22,0.10)] shadow-float py-1.5 px-3">
       <nav className="flex items-center justify-around">
         {navItems.map((item) => {
           const isActive = item.href === '/' 
@@ -75,16 +73,16 @@ export const MobileBottomNav: React.FC = () => {
             <Link
               key={item.href}
               href={item.href}
-              className={`flex flex-col items-center justify-center py-1.5 px-3 rounded-xl transition-all duration-150 ${
+              className={`flex flex-col items-center justify-center py-1 px-3 rounded-xl transition-all duration-150 ${
                 isActive 
-                  ? 'text-slate-950 font-semibold' 
-                  : 'text-content-muted hover:text-content'
+                  ? 'text-[#121316] font-semibold' 
+                  : 'text-[#66676E] hover:text-[#121316]'
               }`}
             >
-              <div className={`p-1 rounded-lg ${isActive ? 'bg-surface-subtle text-slate-950' : ''}`}>
+              <div className={`p-1 rounded-lg ${isActive ? 'bg-[#DDD6FE] text-[#121316]' : ''}`}>
                 {item.icon}
               </div>
-              <span className="text-[10px] mt-0.5 tracking-tight">
+              <span className="text-[10px] mt-0.5 tracking-tight font-medium">
                 {item.label}
               </span>
             </Link>

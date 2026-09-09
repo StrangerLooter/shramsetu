@@ -4,36 +4,36 @@ import React from 'react';
 import Link from 'next/link';
 import { useApp } from '@/lib/store/app-store';
 import { 
-  ShieldCheck, 
   ArrowRight,
   CheckCircle2
 } from 'lucide-react';
 import { MetricCard } from '@/components/ui/MetricCard';
 import { Button } from '@/components/ui/Button';
-import { StatusBadge } from '@/components/ui/StatusBadge';
 
 export default function PlatformAdminDashboardPage() {
-  const { cooperatives, jobs, language } = useApp();
+  const { jobs, language } = useApp();
 
   const disputedJobs = jobs.filter(j => j.status === 'DISPUTED');
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8 space-y-6">
+    <div className="max-w-6xl mx-auto px-4 py-12 sm:py-16 space-y-8">
       
       {/* 1. National Ministry Header */}
-      <div className="bg-white rounded-2xl p-6 border border-border shadow-card flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+      <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[rgba(18,19,22,0.08)] shadow-card flex flex-col sm:flex-row sm:items-center justify-between gap-6">
         <div>
-          <div className="flex items-center gap-2 flex-wrap">
-            <h1 className="font-display text-xl sm:text-2xl font-bold text-content">
-              {language === 'hi' ? 'सहकारिता मंत्रालय एवं प्लेटफ़ॉर्म नियंत्रण केंद्र' : 'Ministry of Cooperation & Ecosystem Oversight'}
-            </h1>
-          </div>
-          <p className="text-xs sm:text-sm text-content-muted mt-1 max-w-2xl leading-relaxed">
+          <h1 className="font-serif text-2xl sm:text-3xl font-normal text-[#121316]">
+            {language === 'hi' ? (
+              <>सहकारिता मंत्रालय एवं <span className="font-serif italic font-normal">नियंत्रण केंद्र</span></>
+            ) : (
+              <>Ministry of Cooperation & <span className="font-serif italic font-normal">Ecosystem Oversight</span></>
+            )}
+          </h1>
+          <p className="text-xs sm:text-sm text-[#66676E] mt-1 max-w-2xl leading-relaxed font-light">
             Public digital infrastructure monitoring: Statutory wage floor compliance, democratic cooperative dispatch, and worker social security.
           </p>
-          <div className="flex items-center gap-3 mt-3 text-xs text-content-muted">
-            <span className="flex items-center gap-1.5 text-emerald-800 font-medium">
-              <span className="w-2 h-2 rounded-full bg-emerald-600" />
+          <div className="flex items-center gap-3 mt-3 text-xs text-[#66676E]">
+            <span className="flex items-center gap-1.5 text-[#0D2F28] font-medium">
+              <span className="w-2 h-2 rounded-full bg-[#0D2F28]" />
               186 Cooperatives Connected
             </span>
             <span>•</span>
@@ -41,14 +41,14 @@ export default function PlatformAdminDashboardPage() {
           </div>
         </div>
 
-        <div className="bg-surface-subtle p-4 rounded-xl border border-border text-xs sm:text-right shrink-0">
-          <span className="text-content-muted block">Total Protected Wages Distributed</span>
-          <span className="text-2xl font-bold text-emerald-700">₹42,84,500</span>
+        <div className="bg-[#F2EFE9] p-5 rounded-2xl border border-[rgba(18,19,22,0.08)] text-xs sm:text-right shrink-0">
+          <span className="text-[#66676E] block font-light">Total Protected Wages Distributed</span>
+          <span className="font-serif text-3xl font-bold text-[#0D2F28]">₹42,84,500</span>
         </div>
       </div>
 
       {/* 2. Top Macro KPIs (6 Cards) */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5">
         <MetricCard
           label="Workers"
           value="12,842"
@@ -82,13 +82,13 @@ export default function PlatformAdminDashboardPage() {
       </div>
 
       {/* 3. Real-Time Statutory Wage Floor Compliance Section */}
-      <div className="bg-white rounded-2xl p-6 border border-border shadow-card space-y-4">
-        <div className="flex items-center justify-between pb-3 border-b border-border/70">
+      <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[rgba(18,19,22,0.08)] shadow-card space-y-5">
+        <div className="flex items-center justify-between pb-3 border-b border-[rgba(18,19,22,0.08)]">
           <div>
-            <h2 className="font-semibold text-base text-content">
+            <h2 className="font-serif text-xl font-normal text-[#121316]">
               Statutory Wage Compliance by Regional Trade
             </h2>
-            <p className="text-xs text-content-muted">
+            <p className="text-xs text-[#66676E] font-light mt-0.5">
               Wage floor enforcement: Prevents predatory downward bidding and safeguards minimum artisan compensation.
             </p>
           </div>
@@ -103,15 +103,15 @@ export default function PlatformAdminDashboardPage() {
         <div className="overflow-x-auto">
           <table className="w-full text-xs text-left">
             <thead>
-              <tr className="border-b border-border/60 text-content-muted font-semibold">
-                <th className="py-2.5 px-3">Trade Category</th>
-                <th className="py-2.5 px-3">Statutory Minimum Floor</th>
-                <th className="py-2.5 px-3">Average Payout</th>
-                <th className="py-2.5 px-3">Compliance Rate</th>
-                <th className="py-2.5 px-3">Status</th>
+              <tr className="border-b border-[rgba(18,19,22,0.08)] text-[#66676E] font-medium">
+                <th className="py-3 px-3">Trade Category</th>
+                <th className="py-3 px-3">Statutory Minimum Floor</th>
+                <th className="py-3 px-3">Average Payout</th>
+                <th className="py-3 px-3">Compliance Rate</th>
+                <th className="py-3 px-3">Status</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-border/60">
+            <tbody className="divide-y divide-[rgba(18,19,22,0.06)]">
               {[
                 { trade: 'Plumbing & Sanitation', floor: '₹350/job', avg: '₹412/job', rate: '100%', compliant: true },
                 { trade: 'Electrical Systems', floor: '₹300/job', avg: '₹380/job', rate: '100%', compliant: true },
@@ -119,14 +119,14 @@ export default function PlatformAdminDashboardPage() {
                 { trade: 'Painting & Finishing', floor: '₹450/job', avg: '₹520/job', rate: '99.8%', compliant: true },
                 { trade: 'Appliance Repair', floor: '₹350/job', avg: '₹430/job', rate: '100%', compliant: true },
               ].map((row, idx) => (
-                <tr key={idx} className="hover:bg-surface-subtle transition-colors">
-                  <td className="py-3 px-3 font-semibold text-content">{row.trade}</td>
-                  <td className="py-3 px-3 text-content-muted">{row.floor}</td>
-                  <td className="py-3 px-3 font-medium text-emerald-800">{row.avg}</td>
-                  <td className="py-3 px-3 font-semibold text-content">{row.rate}</td>
-                  <td className="py-3 px-3">
-                    <span className="inline-flex items-center gap-1 text-[11px] font-medium text-emerald-800 bg-surface-subtle px-2 py-0.5 rounded border border-border/60">
-                      <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                <tr key={idx} className="hover:bg-[#F2EFE9]/60 transition-colors">
+                  <td className="py-3.5 px-3 font-medium text-[#121316]">{row.trade}</td>
+                  <td className="py-3.5 px-3 text-[#66676E]">{row.floor}</td>
+                  <td className="py-3.5 px-3 font-semibold text-[#0D2F28]">{row.avg}</td>
+                  <td className="py-3.5 px-3 font-semibold text-[#121316]">{row.rate}</td>
+                  <td className="py-3.5 px-3">
+                    <span className="inline-flex items-center gap-1.5 text-[11px] font-medium text-[#0D2F28] bg-[#EBF5F0] px-2.5 py-0.5 rounded-full border border-[#CCE6DA]">
+                      <CheckCircle2 className="w-3 h-3 text-[#0D2F28]" />
                       Statutory Compliant
                     </span>
                   </td>
@@ -138,13 +138,13 @@ export default function PlatformAdminDashboardPage() {
       </div>
 
       {/* 4. Active Dispute & Grievance Queue */}
-      <div className="bg-white rounded-2xl p-6 border border-border shadow-card space-y-4">
-        <div className="flex items-center justify-between pb-3 border-b border-border/70">
+      <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[rgba(18,19,22,0.08)] shadow-card space-y-4">
+        <div className="flex items-center justify-between pb-3 border-b border-[rgba(18,19,22,0.08)]">
           <div>
-            <h2 className="font-semibold text-base text-content">
+            <h2 className="font-serif text-xl font-normal text-[#121316]">
               Active Grievance & Arbitration Queue ({disputedJobs.length})
             </h2>
-            <p className="text-xs text-content-muted">
+            <p className="text-xs text-[#66676E] font-light mt-0.5">
               Disputed orders held in platform escrow pending cooperative arbitration.
             </p>
           </div>
@@ -157,16 +157,16 @@ export default function PlatformAdminDashboardPage() {
         </div>
 
         {disputedJobs.length === 0 ? (
-          <div className="p-8 text-center bg-surface-subtle rounded-xl border border-border/70 text-xs text-content-muted">
+          <div className="p-8 text-center bg-[#F2EFE9] rounded-2xl border border-[rgba(18,19,22,0.08)] text-xs text-[#66676E]">
             Zero active disputes in the arbitration queue. 99.4% first-time resolution rate.
           </div>
         ) : (
           <div className="space-y-3">
             {disputedJobs.map((dj) => (
-              <div key={dj.id} className="p-4 rounded-xl bg-surface-subtle border border-red-200 flex items-center justify-between text-xs">
+              <div key={dj.id} className="p-4 rounded-2xl bg-[#F2EFE9] border border-red-200 flex items-center justify-between text-xs">
                 <div>
-                  <div className="font-semibold text-content">{dj.serviceName} (#{dj.id})</div>
-                  <div className="text-[11px] text-content-muted mt-0.5">
+                  <div className="font-serif text-sm font-normal text-[#121316]">{dj.serviceName} (#{dj.id})</div>
+                  <div className="text-[11px] text-[#66676E] mt-0.5 font-light">
                     Customer: {dj.customerName} • Worker: {dj.workerName}
                   </div>
                 </div>

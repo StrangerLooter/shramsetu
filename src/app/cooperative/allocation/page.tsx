@@ -50,33 +50,37 @@ export default function FairAllocationConsolePage() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8 space-y-6">
+    <div className="max-w-6xl mx-auto px-4 py-12 sm:py-16 space-y-8">
       
       {/* 1. Console Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2 text-xs font-semibold text-emerald-800 uppercase tracking-wider">
-            <Scale className="w-4 h-4 text-emerald-600" />
+          <div className="flex items-center gap-2 text-xs font-semibold text-[#0D2F28] uppercase tracking-wider">
+            <Scale className="w-4 h-4 text-[#0D2F28]" />
             <span>Cooperative Governance & Democratic Dispatch</span>
           </div>
-          <h1 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-content mt-1">
-            {language === 'hi' ? 'समान कार्य आवंटन इंजन' : 'Fair Work Allocation Engine'}
+          <h1 className="font-serif text-3xl sm:text-4xl font-normal tracking-tight text-[#121316] mt-1">
+            {language === 'hi' ? (
+              <>समान कार्य <span className="font-serif italic font-normal">आवंटन इंजन</span></>
+            ) : (
+              <>Fair Work <span className="font-serif italic font-normal">Allocation Engine</span></>
+            )}
           </h1>
-          <p className="text-xs sm:text-sm text-content-muted mt-1">
+          <p className="text-xs sm:text-sm text-[#66676E] mt-1 font-light">
             Multi-factor dispatch algorithm: Prevents star-worker monopoly by factoring workload equity alongside proximity and skill.
           </p>
         </div>
 
-        <div className="flex items-center gap-2 bg-surface-subtle px-3 py-1.5 rounded-xl border border-border text-xs text-content font-medium self-start">
-          <ShieldCheck className="w-4 h-4 text-emerald-600" />
+        <div className="flex items-center gap-2 bg-[#EBF5F0] px-3.5 py-1.5 rounded-full border border-[#CCE6DA] text-xs text-[#0D2F28] font-medium self-start">
+          <ShieldCheck className="w-4 h-4 text-[#0D2F28]" />
           <span>Statutory Fairness Index: 88.4%</span>
         </div>
       </div>
 
       {assignedNotice && (
-        <div className="p-4 rounded-xl bg-surface-subtle border border-emerald-300 text-content text-xs flex items-center justify-between shadow-subtle">
-          <div className="flex items-center gap-2 font-medium">
-            <Check className="w-4 h-4 text-emerald-600" />
+        <div className="p-4 rounded-2xl bg-[#EBF5F0] border border-[#CCE6DA] text-[#121316] text-xs flex items-center justify-between shadow-subtle">
+          <div className="flex items-center gap-2 font-medium text-[#0D2F28]">
+            <Check className="w-4 h-4 text-[#0D2F28]" />
             <span>{assignedNotice}</span>
           </div>
           <Button
@@ -97,11 +101,11 @@ export default function FairAllocationConsolePage() {
         
         {/* Left Column (4 cols): Pending Demand Queue */}
         <div className="lg:col-span-4 space-y-3">
-          <h2 className="text-xs font-semibold uppercase tracking-wider text-content-muted">
+          <h2 className="text-xs font-semibold uppercase tracking-wider text-[#66676E]">
             Incoming Demand Queue ({pendingJobs.length})
           </h2>
 
-          <div className="space-y-2.5">
+          <div className="space-y-3">
             {pendingJobs.map((job) => {
               const isSelected = job.id === selectedJobId;
               return (
@@ -110,22 +114,22 @@ export default function FairAllocationConsolePage() {
                   onClick={() => setSelectedJobId(job.id)}
                   className={`p-4 rounded-2xl border cursor-pointer transition-all duration-150 ${
                     isSelected 
-                      ? 'bg-white border-slate-900 shadow-card ring-1 ring-slate-900' 
-                      : 'bg-white hover:border-neutral-300 border-border/80'
+                      ? 'bg-white border-[#121316] shadow-card ring-1 ring-[#121316]' 
+                      : 'bg-white hover:border-[rgba(18,19,22,0.18)] border-[rgba(18,19,22,0.08)]'
                   }`}
                 >
                   <div className="flex items-center justify-between text-xs">
-                    <span className="font-semibold text-content">{job.serviceName}</span>
-                    <span className="text-[10px] font-mono bg-surface-subtle text-content-muted px-1.5 py-0.2 rounded border border-border/60">
+                    <span className="font-serif text-sm font-normal text-[#121316]">{job.serviceName}</span>
+                    <span className="text-[10px] font-mono bg-[#F2EFE9] text-[#66676E] px-2 py-0.5 rounded border border-[rgba(18,19,22,0.06)]">
                       #{job.id}
                     </span>
                   </div>
 
-                  <p className="text-xs text-content-muted mt-1 line-clamp-1">{job.description}</p>
+                  <p className="text-xs text-[#66676E] mt-1 line-clamp-1 font-light">{job.description}</p>
                   
-                  <div className="flex items-center justify-between mt-2 pt-2 border-t border-border/60 text-[11px] text-content-muted">
+                  <div className="flex items-center justify-between mt-2 pt-2 border-t border-[rgba(18,19,22,0.06)] text-[11px] text-[#66676E]">
                     <span>{job.urgency} Urgency</span>
-                    <span className="font-semibold text-emerald-700">₹{job.pricing.protectedWorkerWage} Labour</span>
+                    <span className="font-serif font-semibold text-[#0D2F28]">₹{job.pricing.protectedWorkerWage} Labour</span>
                   </div>
                 </div>
               );
@@ -138,18 +142,18 @@ export default function FairAllocationConsolePage() {
           
           {/* Selected Job Header Summary */}
           {selectedJob && (
-            <div className="bg-white rounded-2xl p-5 border border-border shadow-card space-y-1">
+            <div className="bg-white rounded-3xl p-6 border border-[rgba(18,19,22,0.08)] shadow-subtle space-y-1">
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="font-semibold text-base text-content">
+                  <h3 className="font-serif text-lg font-normal text-[#121316]">
                     Evaluating Candidates for: {selectedJob.serviceName}
                   </h3>
-                  <p className="text-xs text-content-muted mt-0.5">
-                    Customer: <strong className="text-content font-medium">{selectedJob.customerName}</strong> • {selectedJob.locationAddress}
+                  <p className="text-xs text-[#66676E] mt-0.5 font-light">
+                    Customer: <strong className="text-[#121316] font-medium">{selectedJob.customerName}</strong> • {selectedJob.locationAddress}
                   </p>
                 </div>
 
-                <span className="text-xs font-semibold bg-surface-subtle text-content px-2.5 py-1 rounded-full border border-border/70">
+                <span className="text-xs font-semibold bg-[#F2EFE9] text-[#121316] px-3 py-1 rounded-full border border-[rgba(18,19,22,0.08)]">
                   Status: {selectedJob.status}
                 </span>
               </div>
@@ -158,8 +162,8 @@ export default function FairAllocationConsolePage() {
 
           {/* Scored Worker Candidate Cards */}
           <div className="space-y-4">
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-content-muted flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-[#66676E] flex items-center gap-1.5">
+              <Sparkles className="w-3.5 h-3.5 text-[#B45309]" />
               <span>Algorithmic Fairness Recommendations</span>
             </h3>
 
@@ -170,24 +174,24 @@ export default function FairAllocationConsolePage() {
               return (
                 <div
                   key={worker.id}
-                  className={`bg-white rounded-2xl p-5 border transition-all duration-150 ${
+                  className={`bg-white rounded-3xl p-6 border transition-all duration-150 ${
                     isRecommended 
-                      ? 'border-emerald-500 shadow-card ring-1 ring-emerald-500/20' 
-                      : 'border-border hover:border-neutral-300'
+                      ? 'border-[#0D2F28] shadow-card ring-1 ring-[#0D2F28]/20' 
+                      : 'border-[rgba(18,19,22,0.08)] hover:border-[rgba(18,19,22,0.18)]'
                   }`}
                 >
                   <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                     
                     {/* Worker Details */}
-                    <div className="flex items-start gap-3">
+                    <div className="flex items-start gap-3.5">
                       <div className="relative">
                         <img 
                           src={worker.avatar} 
                           alt={worker.name} 
-                          className="w-13 h-13 rounded-full object-cover border border-border shadow-2xs"
+                          className="w-14 h-14 rounded-full object-cover border border-[rgba(18,19,22,0.08)] shadow-subtle"
                         />
                         {isRecommended && (
-                          <span className="absolute -top-1 -right-1 bg-emerald-600 text-white text-[9px] font-bold px-1 rounded-full">
+                          <span className="absolute -top-1 -right-1 bg-[#0D2F28] text-white text-[9px] font-bold px-1.5 py-0.2 rounded-full">
                             TOP
                           </span>
                         )}
@@ -195,23 +199,23 @@ export default function FairAllocationConsolePage() {
 
                       <div>
                         <div className="flex items-center gap-2">
-                          <h4 className="font-semibold text-content text-sm">{worker.name}</h4>
-                          <span className="text-[10px] bg-surface-subtle text-content-muted px-1.5 py-0.2 rounded border border-border/60 font-medium">
+                          <h4 className="font-serif text-base font-normal text-[#121316]">{worker.name}</h4>
+                          <span className="text-[10px] bg-[#F2EFE9] text-[#66676E] px-2 py-0.5 rounded-full border border-[rgba(18,19,22,0.06)] font-medium">
                             {worker.experienceYears}y exp
                           </span>
                         </div>
 
-                        <p className="text-xs text-content-muted mt-0.5">{worker.cooperativeName}</p>
+                        <p className="text-xs text-[#66676E] mt-0.5">{worker.cooperativeName}</p>
 
-                        <div className="flex flex-wrap items-center gap-3 mt-1.5 text-xs text-content-muted">
+                        <div className="flex flex-wrap items-center gap-3 mt-1.5 text-xs text-[#66676E]">
                           <span className="font-semibold text-amber-600">★ {worker.rating}</span>
                           <span>•</span>
                           <span className="flex items-center gap-1">
-                            <MapPin className="w-3.5 h-3.5 text-content-muted" />
+                            <MapPin className="w-3.5 h-3.5 text-[#66676E]" />
                             {worker.distanceKm} km away
                           </span>
                           <span>•</span>
-                          <span className={`font-semibold ${worker.completedJobsToday > 3 ? 'text-amber-700' : 'text-emerald-700'}`}>
+                          <span className={`font-semibold ${worker.completedJobsToday > 3 ? 'text-amber-700' : 'text-[#0D2F28]'}`}>
                             {worker.completedJobsToday} jobs today
                           </span>
                         </div>
@@ -220,113 +224,113 @@ export default function FairAllocationConsolePage() {
 
                     {/* Overall Match Score Badge */}
                     <div className="text-right shrink-0">
-                      <div className="inline-flex flex-col items-center justify-center w-13 h-13 rounded-xl bg-surface-subtle border border-border text-content">
-                        <span className="text-base font-bold">{matchScore}%</span>
-                        <span className="text-[9px] font-semibold uppercase tracking-tighter text-content-muted">Match</span>
+                      <div className="inline-flex flex-col items-center justify-center w-14 h-14 rounded-2xl bg-[#F2EFE9] border border-[rgba(18,19,22,0.08)] text-[#121316]">
+                        <span className="font-serif text-lg font-bold">{matchScore}%</span>
+                        <span className="text-[9px] font-semibold uppercase tracking-tighter text-[#66676E]">Match</span>
                       </div>
                     </div>
                   </div>
 
                   {/* 4 Multi-Factor Scoring Breakdown with Visual Progress Bars */}
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-3 mt-3 border-t border-border/70 text-xs">
-                    <div className="bg-surface-subtle p-2.5 rounded-xl border border-border/60">
-                      <div className="flex items-center justify-between text-[10px] text-content-muted mb-1">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-4 mt-4 border-t border-[rgba(18,19,22,0.08)] text-xs">
+                    <div className="bg-[#F2EFE9] p-3 rounded-2xl border border-[rgba(18,19,22,0.06)]">
+                      <div className="flex items-center justify-between text-[10px] text-[#66676E] mb-1">
                         <span>1. Skill Match</span>
-                        <span className="font-semibold text-content">{subScores.skillMatch}/30</span>
+                        <span className="font-semibold text-[#121316]">{subScores.skillMatch}/30</span>
                       </div>
-                      <div className="w-full bg-neutral-200 h-1 rounded-full overflow-hidden">
+                      <div className="w-full bg-[#E2DDD3] h-1.5 rounded-full overflow-hidden">
                         <div 
-                          className="bg-slate-900 h-full rounded-full transition-all duration-500" 
+                          className="bg-[#121316] h-full rounded-full transition-all duration-500" 
                           style={{ width: `${(subScores.skillMatch / 30) * 100}%` }}
                         />
                       </div>
-                      <span className="text-[9px] text-content-muted block mt-1">Trade certified</span>
+                      <span className="text-[9px] text-[#66676E] block mt-1">Trade certified</span>
                     </div>
 
-                    <div className="bg-surface-subtle p-2.5 rounded-xl border border-border/60">
-                      <div className="flex items-center justify-between text-[10px] text-content-muted mb-1">
+                    <div className="bg-[#F2EFE9] p-3 rounded-2xl border border-[rgba(18,19,22,0.06)]">
+                      <div className="flex items-center justify-between text-[10px] text-[#66676E] mb-1">
                         <span>2. Proximity</span>
-                        <span className="font-semibold text-content">{subScores.distanceScore}/25</span>
+                        <span className="font-semibold text-[#121316]">{subScores.distanceScore}/25</span>
                       </div>
-                      <div className="w-full bg-neutral-200 h-1 rounded-full overflow-hidden">
+                      <div className="w-full bg-[#E2DDD3] h-1.5 rounded-full overflow-hidden">
                         <div 
-                          className="bg-teal-700 h-full rounded-full transition-all duration-500" 
+                          className="bg-[#0D2F28] h-full rounded-full transition-all duration-500" 
                           style={{ width: `${(subScores.distanceScore / 25) * 100}%` }}
                         />
                       </div>
-                      <span className="text-[9px] text-content-muted block mt-1">{worker.distanceKm} km radius</span>
+                      <span className="text-[9px] text-[#66676E] block mt-1">{worker.distanceKm} km radius</span>
                     </div>
 
-                    <div className="bg-emerald-50/60 p-2.5 rounded-xl border border-emerald-200 shadow-2xs">
-                      <div className="flex items-center justify-between text-[10px] text-emerald-900 font-semibold mb-1">
+                    <div className="bg-[#EBF5F0] p-3 rounded-2xl border border-[#CCE6DA]">
+                      <div className="flex items-center justify-between text-[10px] text-[#0D2F28] font-semibold mb-1">
                         <span>3. Workload Equity</span>
                         <span>{subScores.workloadFairness}/25</span>
                       </div>
-                      <div className="w-full bg-emerald-200 h-1 rounded-full overflow-hidden">
+                      <div className="w-full bg-[#CCE6DA] h-1.5 rounded-full overflow-hidden">
                         <div 
-                          className="bg-emerald-700 h-full rounded-full transition-all duration-500" 
+                          className="bg-[#0D2F28] h-full rounded-full transition-all duration-500" 
                           style={{ width: `${(subScores.workloadFairness / 25) * 100}%` }}
                         />
                       </div>
-                      <span className="text-[9px] text-emerald-800 block mt-1 font-medium">Anti-monopoly balance</span>
+                      <span className="text-[9px] text-[#0D2F28] block mt-1 font-medium">Anti-monopoly balance</span>
                     </div>
 
-                    <div className="bg-surface-subtle p-2.5 rounded-xl border border-border/60">
-                      <div className="flex items-center justify-between text-[10px] text-content-muted mb-1">
+                    <div className="bg-[#F2EFE9] p-3 rounded-2xl border border-[rgba(18,19,22,0.06)]">
+                      <div className="flex items-center justify-between text-[10px] text-[#66676E] mb-1">
                         <span>4. Trust & Rating</span>
-                        <span className="font-semibold text-content">{subScores.ratingExperience}/20</span>
+                        <span className="font-semibold text-[#121316]">{subScores.ratingExperience}/20</span>
                       </div>
-                      <div className="w-full bg-neutral-200 h-1 rounded-full overflow-hidden">
+                      <div className="w-full bg-[#E2DDD3] h-1.5 rounded-full overflow-hidden">
                         <div 
-                          className="bg-amber-500 h-full rounded-full transition-all duration-500" 
+                          className="bg-[#B45309] h-full rounded-full transition-all duration-500" 
                           style={{ width: `${(subScores.ratingExperience / 20) * 100}%` }}
                         />
                       </div>
-                      <span className="text-[9px] text-content-muted block mt-1">{worker.rating}★ rating</span>
+                      <span className="text-[9px] text-[#66676E] block mt-1">{worker.rating}★ rating</span>
                     </div>
                   </div>
 
                   {/* Explainability & Anti-Monopoly Spotlight Badge */}
-                  <div className="mt-3 p-2.5 rounded-xl bg-surface-subtle border border-border">
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="text-[10px] font-semibold uppercase tracking-wider text-content flex items-center gap-1">
-                        <Scale className="w-3.5 h-3.5 text-emerald-600" />
+                  <div className="mt-3.5 p-3.5 rounded-2xl bg-[#F2EFE9] border border-[rgba(18,19,22,0.06)]">
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-[10px] font-semibold uppercase tracking-wider text-[#121316] flex items-center gap-1">
+                        <Scale className="w-3.5 h-3.5 text-[#0D2F28]" />
                         <span>Why the Engine Recommends this Artisan:</span>
                       </span>
                       {worker.completedJobsToday <= 1 && (
-                        <span className="text-[9px] font-bold uppercase px-1.5 py-0.5 rounded bg-emerald-700 text-white">
+                        <span className="text-[9px] font-bold uppercase px-2 py-0.5 rounded-full bg-[#0D2F28] text-white">
                           Income Equity Prioritized
                         </span>
                       )}
                     </div>
-                    <ul className="space-y-1 text-xs text-content-secondary">
+                    <ul className="space-y-1 text-xs text-[#66676E]">
                       {reasons.map((r, i) => (
                         <li key={i} className="flex items-center gap-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                          <span className="font-medium text-[11px]">{r}</span>
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#0D2F28] shrink-0" />
+                          <span className="font-medium text-[11px] text-[#121316]">{r}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  {/* Action Dispatch Button */}
-                  <div className="mt-4 pt-3 border-t border-border/70 flex items-center justify-between">
+                  {/* Action Dispatch Button in Soft Lavender */}
+                  <div className="mt-5 pt-3 border-t border-[rgba(18,19,22,0.08)] flex items-center justify-between">
                     {isCurrentlyAssigned ? (
-                      <span className="text-xs font-semibold text-emerald-800 flex items-center gap-1 bg-surface-subtle px-3 py-1.5 rounded-lg border border-border">
+                      <span className="text-xs font-semibold text-[#0D2F28] flex items-center gap-1 bg-[#EBF5F0] px-3 py-1.5 rounded-xl border border-[#CCE6DA]">
                         <Check className="w-3.5 h-3.5" />
                         <span>Currently Assigned</span>
                       </span>
                     ) : (
-                      <span className="text-[11px] text-content-muted">
+                      <span className="text-[11px] text-[#66676E]">
                         {isRecommended ? '★ Recommended by Algorithm' : 'Eligible Candidate'}
                       </span>
                     )}
 
                     <Button
-                      variant={isRecommended ? 'coop' : 'primary'}
+                      variant="primary"
                       size="sm"
                       onClick={() => handleDispatch(worker.id, worker.name, reasons.join(' • '))}
-                      leftIcon={<UserCheck className="w-3.5 h-3.5" />}
+                      leftIcon={<UserCheck className="w-3.5 h-3.5 text-[#121316]" />}
                     >
                       {isCurrentlyAssigned ? 'Re-Dispatch' : `Assign ${worker.name.split(' ')[0]}`}
                     </Button>

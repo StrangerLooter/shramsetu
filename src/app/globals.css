@@ -1,14 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #FAFAF9;
-  --foreground: #09090B;
-  --surface: #FFFFFF;
-  --border: #E4E4E7;
+  --background: #FBF9F5;
+  --foreground: #121316;
+  --surface-cream: #FBF9F5;
+  --surface-card: #FFFFFF;
+  --surface-beige: #F2EFE9;
+  --teal-deep: #0D2F28;
+  --lavender-accent: #DDD6FE;
+  --border: rgba(18, 19, 22, 0.10);
 }
 
 body {
@@ -21,32 +25,36 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, .font-display {
-  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
-  letter-spacing: -0.022em;
+/* Editorial display typography for headings */
+h1, h2, h3, .font-serif-heading {
+  font-family: 'Newsreader', 'Cormorant Garamond', Georgia, serif;
+  letter-spacing: -0.015em;
 }
 
-/* Subtle Glassmorphism */
-.glass-panel {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(228, 228, 231, 0.8);
+/* Specific editorial italic emphasis */
+.font-serif-italic {
+  font-family: 'Newsreader', 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
 }
 
-.glass-panel-dark {
-  background: rgba(15, 23, 42, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(39, 39, 42, 0.6);
+/* Subtle Floating Glass Panels */
+.floating-nav {
+  background: rgba(251, 249, 245, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(18, 19, 22, 0.10);
 }
 
-/* Subtle Civic Background */
-.bg-mesh-civic {
-  background-color: #FAFAF9;
-  background-image: 
-    radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.03) 0px, transparent 40%),
-    radial-gradient(at 100% 0%, rgba(16, 185, 129, 0.03) 0px, transparent 40%);
+.teal-card {
+  background-color: #0D2F28;
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.beige-card {
+  background-color: #F2EFE9;
+  border: 1px solid rgba(18, 19, 22, 0.08);
 }
 
 /* Minimal Custom Scrollbar */
@@ -58,11 +66,11 @@ h1, h2, h3, h4, .font-display {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #D4D4D8;
+  background: rgba(18, 19, 22, 0.15);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #A1A1AA;
+  background: rgba(18, 19, 22, 0.28);
 }
 
 /* Soundbox Wave Animation */
@@ -93,7 +101,7 @@ h1, h2, h3, h4, .font-display {
 .animate-marquee {
   display: flex;
   width: 200%;
-  animation: marquee 30s linear infinite;
+  animation: marquee 35s linear infinite;
 }
 
 .animate-marquee:hover {

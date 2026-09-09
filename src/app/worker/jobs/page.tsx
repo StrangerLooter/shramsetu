@@ -6,10 +6,9 @@ import { useApp } from '@/lib/store/app-store';
 import { 
   ShieldCheck, 
   MapPin, 
-  ArrowRight,
-  HardHat,
-  Navigation,
-  CheckCircle2
+  ArrowRight, 
+  HardHat, 
+  Navigation 
 } from 'lucide-react';
 import { StatusBadge } from '@/components/ui/StatusBadge';
 import { EmptyState } from '@/components/ui/EmptyState';
@@ -21,21 +20,25 @@ export default function WorkerJobsPage() {
   const workerJobs = jobs.filter(j => j.workerId === activeWorker.id);
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8 space-y-6">
+    <div className="max-w-4xl mx-auto px-4 py-12 sm:py-16 space-y-8">
       
-      {/* Header */}
+      {/* Editorial Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-content">
-            {language === 'hi' ? 'कार्य आवंटन एवं इतिहास' : 'Worker Job Assignments'}
+          <h1 className="font-serif text-3xl sm:text-4xl font-normal tracking-tight text-[#121316]">
+            {language === 'hi' ? (
+              <>कार्य आवंटन <span className="font-serif italic font-normal">एवं इतिहास</span></>
+            ) : (
+              <>Worker Job <span className="font-serif italic font-normal">Assignments</span></>
+            )}
           </h1>
-          <p className="text-xs sm:text-sm text-content-muted mt-1">
+          <p className="text-xs sm:text-sm text-[#66676E] mt-1 font-light">
             Jobs assigned to you through cooperative fair work allocation.
           </p>
         </div>
 
-        <div className="flex items-center gap-2 bg-surface-subtle px-3 py-1.5 rounded-xl border border-border text-xs font-medium text-emerald-800 self-start">
-          <ShieldCheck className="w-4 h-4 text-emerald-600" />
+        <div className="flex items-center gap-2 bg-[#EBF5F0] px-3.5 py-1.5 rounded-full border border-[#CCE6DA] text-xs font-semibold text-[#0D2F28] self-start">
+          <ShieldCheck className="w-4 h-4 text-[#0D2F28]" />
           <span>Statutory Wage Guarantee Active</span>
         </div>
       </div>
@@ -43,7 +46,7 @@ export default function WorkerJobsPage() {
       {/* List or Empty State */}
       {workerJobs.length === 0 ? (
         <EmptyState
-          icon={<HardHat className="w-6 h-6" />}
+          icon={<HardHat className="w-6 h-6 text-[#121316]" />}
           title={language === 'hi' ? 'कोई कार्य आवंटित नहीं है' : 'No jobs in queue'}
           description={language === 'hi' 
             ? 'जब आपके क्षेत्र में कोई सेवा अनुरोध आएगा, तो समान आवंटन प्रणाली आपको सूचित करेगी।'
@@ -54,42 +57,42 @@ export default function WorkerJobsPage() {
           {workerJobs.map((job) => (
             <div 
               key={job.id}
-              className="bg-white rounded-2xl p-5 border border-border shadow-card space-y-3.5 hover:border-neutral-300 transition-all duration-150"
+              className="bg-white rounded-3xl p-6 border border-[rgba(18,19,22,0.08)] shadow-subtle hover:shadow-card hover:border-[rgba(18,19,22,0.18)] transition-all duration-150 space-y-4"
             >
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-border/70">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-[rgba(18,19,22,0.08)]">
                 <div className="flex items-center gap-2.5 flex-wrap">
-                  <span className="font-semibold text-sm sm:text-base text-content">{job.serviceName}</span>
-                  <span className="text-xs font-mono bg-surface-subtle px-2 py-0.5 rounded text-content-muted border border-border/60">
+                  <span className="font-serif text-lg font-normal text-[#121316]">{job.serviceName}</span>
+                  <span className="text-xs font-mono bg-[#F2EFE9] px-2.5 py-0.5 rounded-md text-[#66676E] border border-[rgba(18,19,22,0.06)]">
                     #{job.id}
                   </span>
                   <StatusBadge status={job.status} size="sm" />
                 </div>
 
                 <div className="text-left sm:text-right">
-                  <span className="text-[10px] text-content-muted uppercase tracking-wider block">Protected Earning</span>
-                  <span className="text-base font-bold text-emerald-700">
+                  <span className="text-[10px] text-[#66676E] uppercase tracking-wider block">Protected Earning</span>
+                  <span className="font-serif text-xl font-bold text-[#0D2F28]">
                     ₹{job.pricing.protectedWorkerWage}
                   </span>
                 </div>
               </div>
 
-              <p className="text-xs text-content-muted">{job.description}</p>
+              <p className="text-xs text-[#66676E] font-light">{job.description}</p>
 
-              <div className="flex flex-wrap items-center gap-4 text-xs text-content-muted">
-                <span className="flex items-center gap-1 font-medium text-content">
-                  <MapPin className="w-3.5 h-3.5 text-content-muted" />
+              <div className="flex flex-wrap items-center gap-4 text-xs text-[#66676E]">
+                <span className="flex items-center gap-1 font-medium text-[#121316]">
+                  <MapPin className="w-3.5 h-3.5 text-[#66676E]" />
                   {job.locationAddress}
                 </span>
                 <span>•</span>
-                <span>Customer: <strong className="text-content font-medium">{job.customerName}</strong></span>
+                <span>Customer: <strong className="text-[#121316] font-medium">{job.customerName}</strong></span>
               </div>
 
               {/* Status Actions */}
-              <div className="pt-2 flex flex-wrap items-center justify-between gap-3 border-t border-border/60">
-                <div className="flex items-center gap-2 flex-wrap">
+              <div className="pt-2 flex flex-wrap items-center justify-between gap-3 border-t border-[rgba(18,19,22,0.08)]">
+                <div className="flex items-center gap-2.5 flex-wrap">
                   {job.status === 'ASSIGNED' && (
                     <Button
-                      variant="coop"
+                      variant="primary"
                       size="sm"
                       onClick={() => updateJobStatus(job.id, 'ACCEPTED')}
                     >
@@ -102,7 +105,7 @@ export default function WorkerJobsPage() {
                       variant="primary"
                       size="sm"
                       onClick={() => updateJobStatus(job.id, 'WORKER_ON_THE_WAY')}
-                      leftIcon={<Navigation className="w-3.5 h-3.5" />}
+                      leftIcon={<Navigation className="w-3.5 h-3.5 text-[#121316]" />}
                     >
                       Start Navigation
                     </Button>
@@ -130,7 +133,7 @@ export default function WorkerJobsPage() {
 
                   {job.status === 'IN_PROGRESS' && (
                     <Button
-                      variant="coop"
+                      variant="primary"
                       size="sm"
                       onClick={() => updateJobStatus(job.id, 'COMPLETED', {
                         completionProof: {
@@ -147,7 +150,7 @@ export default function WorkerJobsPage() {
 
                 <Link
                   href={`/customer/bookings/${job.id}`}
-                  className="text-xs font-semibold text-content hover:text-slate-900 flex items-center gap-1"
+                  className="text-xs font-medium text-[#121316] hover:text-[#0D2F28] flex items-center gap-1"
                 >
                   <span>Customer View</span>
                   <ArrowRight className="w-3.5 h-3.5" />

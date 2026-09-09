@@ -31,48 +31,48 @@ export default function WorkerDashboardPage() {
   );
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-6 sm:py-10 space-y-6">
+    <div className="max-w-4xl mx-auto px-4 py-8 sm:py-12 space-y-6">
       
       {/* 1. Worker Header & Dignity Greeting */}
-      <div className="bg-white rounded-2xl p-5 sm:p-6 border border-border shadow-card flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+      <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[rgba(18,19,22,0.08)] shadow-card flex flex-col sm:flex-row sm:items-center justify-between gap-6">
         <div className="flex items-center gap-4">
           <div className="relative shrink-0">
             <img 
               src={activeWorker.avatar} 
               alt={activeWorker.name} 
-              className="w-15 h-15 sm:w-16 sm:h-16 rounded-full object-cover border border-border shadow-2xs"
+              className="w-16 h-16 sm:w-18 sm:h-18 rounded-full object-cover border border-[rgba(18,19,22,0.08)] shadow-subtle"
             />
-            <span className="absolute -bottom-1 -right-1 bg-emerald-600 text-white p-1 rounded-full text-[10px]">
-              <ShieldCheck className="w-3.5 h-3.5" />
+            <span className="absolute -bottom-1 -right-1 bg-[#0D2F28] text-white p-1 rounded-full text-[10px]">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#DDD6FE]" />
             </span>
           </div>
 
           <div>
             <div className="flex items-center gap-2 flex-wrap">
-              <h1 className="font-display text-lg sm:text-xl font-bold text-content">
+              <h1 className="font-serif text-2xl sm:text-3xl font-normal text-[#121316]">
                 {language === 'hi' ? `${t.workerGreeting}, ${activeWorker.nameHi}` : `${t.workerGreeting}, ${activeWorker.name}`}
               </h1>
-              <span className="text-[10px] bg-surface-subtle text-content-secondary font-medium px-2 py-0.5 rounded-full border border-border/70">
+              <span className="text-[11px] bg-[#F2EFE9] text-[#121316] font-medium px-2.5 py-0.5 rounded-full border border-[rgba(18,19,22,0.08)]">
                 {language === 'hi' ? 'सत्यापित कामगार' : 'Verified Co-op Member'}
               </span>
             </div>
-            <p className="text-xs text-content-muted mt-0.5">{activeWorker.cooperativeName}</p>
-            <div className="flex items-center gap-2 mt-1.5 text-xs text-content-muted">
+            <p className="text-xs text-[#66676E] mt-1 font-light">{activeWorker.cooperativeName}</p>
+            <div className="flex items-center gap-2 mt-2 text-xs text-[#66676E]">
               <span>★ {activeWorker.rating} ({activeWorker.completedJobsTotal} jobs)</span>
               <span>•</span>
-              <span className="text-emerald-700 font-semibold">100% Protected Wage Floor</span>
+              <span className="text-[#0D2F28] font-semibold">100% Protected Wage Floor</span>
             </div>
           </div>
         </div>
 
         {/* Welfare Quick Status & ID Pass Action */}
         <div className="flex flex-col sm:items-end gap-2 shrink-0">
-          <div className="bg-surface-subtle p-2.5 rounded-xl border border-border text-xs space-y-0.5">
-            <div className="flex items-center gap-1.5 text-emerald-800 font-semibold">
-              <HeartHandshake className="w-3.5 h-3.5 text-emerald-600" />
+          <div className="bg-[#F2EFE9] p-3 rounded-2xl border border-[rgba(18,19,22,0.08)] text-xs space-y-0.5">
+            <div className="flex items-center gap-1.5 text-[#0D2F28] font-semibold">
+              <HeartHandshake className="w-4 h-4 text-[#0D2F28]" />
               <span>Ayushman Health Active</span>
             </div>
-            <p className="text-[11px] text-content-muted">₹5,00,000 Cashless Hospitalization</p>
+            <p className="text-[11px] text-[#66676E] font-light">₹5,00,000 Cashless Hospitalization</p>
           </div>
 
           <Button
@@ -87,7 +87,7 @@ export default function WorkerDashboardPage() {
       </div>
 
       {/* 2. Worker Quick KPIs Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         <MetricCard
           label={t.todaysEarnings}
           value={`₹${activeWorker.todayEarnings}`}
@@ -112,11 +112,11 @@ export default function WorkerDashboardPage() {
 
       {/* 3. ACTIVE JOB DISPATCH CONTROLLER (HERO WORKER ACTION) */}
       {activeJob ? (
-        <div className="bg-white rounded-2xl p-6 border-2 border-slate-900 shadow-card space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-border/70">
+        <div className="bg-white rounded-3xl p-6 sm:p-8 border-2 border-[#121316] shadow-card space-y-5">
+          <div className="flex items-center justify-between pb-4 border-b border-[rgba(18,19,22,0.08)]">
             <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-600 animate-pulse" />
-              <span className="text-xs font-semibold uppercase tracking-wider text-content">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#0D2F28] animate-pulse" />
+              <span className="text-xs font-semibold uppercase tracking-wider text-[#121316]">
                 {t.nextJob} (#{activeJob.id})
               </span>
             </div>
@@ -125,7 +125,7 @@ export default function WorkerDashboardPage() {
                 textToRead={`${activeJob.serviceName}. ${activeJob.description}. Customer: ${activeJob.customerName}. Address: ${activeJob.locationAddress}`}
                 label={language === 'hi' ? 'बोलकर सुनें' : 'Audio Instructions'} 
               />
-              <span className="text-xs font-semibold bg-surface-subtle text-content px-2.5 py-1 rounded-full border border-border/70">
+              <span className="text-xs font-semibold bg-[#F2EFE9] text-[#121316] px-3 py-1 rounded-full border border-[rgba(18,19,22,0.08)]">
                 {activeJob.status}
               </span>
             </div>
@@ -133,30 +133,30 @@ export default function WorkerDashboardPage() {
 
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <h2 className="font-display text-lg font-bold text-content">{activeJob.serviceName}</h2>
-              <p className="text-xs sm:text-sm text-content-muted mt-1">{activeJob.description}</p>
+              <h2 className="font-serif text-xl sm:text-2xl font-normal text-[#121316]">{activeJob.serviceName}</h2>
+              <p className="text-xs sm:text-sm text-[#66676E] mt-1 font-light">{activeJob.description}</p>
               
-              <div className="mt-3 flex flex-wrap items-center gap-3 text-xs text-content-muted">
-                <span className="flex items-center gap-1 font-medium text-content">
-                  <MapPin className="w-4 h-4 text-content-muted" />
+              <div className="mt-3 flex flex-wrap items-center gap-3 text-xs text-[#66676E]">
+                <span className="flex items-center gap-1 font-medium text-[#121316]">
+                  <MapPin className="w-4 h-4 text-[#66676E]" />
                   {activeJob.locationAddress}
                 </span>
                 <span>•</span>
-                <span>Customer: <strong className="text-content font-medium">{activeJob.customerName}</strong></span>
+                <span>Customer: <strong className="text-[#121316] font-medium">{activeJob.customerName}</strong></span>
               </div>
             </div>
 
             <div className="sm:text-right shrink-0">
-              <span className="text-xs text-content-muted block">Protected Earning</span>
-              <span className="text-2xl font-bold text-emerald-700">₹{activeJob.pricing.protectedWorkerWage}</span>
+              <span className="text-xs text-[#66676E] block">Protected Earning</span>
+              <span className="font-serif text-3xl font-semibold text-[#0D2F28]">₹{activeJob.pricing.protectedWorkerWage}</span>
             </div>
           </div>
 
           {/* Big Tap Actions for Worker (Accessible on basic mobile screens) */}
-          <div className="pt-2 flex flex-wrap items-center gap-2.5">
+          <div className="pt-2 flex flex-wrap items-center gap-3">
             {activeJob.status === 'ASSIGNED' && (
               <Button
-                variant="coop"
+                variant="primary"
                 size="lg"
                 onClick={() => updateJobStatus(activeJob.id, 'ACCEPTED')}
                 className="flex-1 min-h-[52px]"
@@ -170,7 +170,7 @@ export default function WorkerDashboardPage() {
                 variant="primary"
                 size="lg"
                 onClick={() => updateJobStatus(activeJob.id, 'WORKER_ON_THE_WAY')}
-                leftIcon={<Navigation className="w-4 h-4" />}
+                leftIcon={<Navigation className="w-4 h-4 text-[#121316]" />}
                 className="flex-1 min-h-[52px]"
               >
                 {t.startNavigation}
@@ -201,7 +201,7 @@ export default function WorkerDashboardPage() {
 
             {activeJob.status === 'IN_PROGRESS' && (
               <Button
-                variant="coop"
+                variant="primary"
                 size="lg"
                 onClick={() => updateJobStatus(activeJob.id, 'COMPLETED', {
                   completionProof: {
@@ -217,58 +217,58 @@ export default function WorkerDashboardPage() {
             )}
 
             {activeJob.status === 'COMPLETED' && (
-              <div className="flex-1 p-3.5 rounded-xl bg-surface-subtle text-emerald-900 font-semibold text-xs text-center border border-emerald-200">
+              <div className="flex-1 p-4 rounded-2xl bg-[#EBF5F0] text-[#0D2F28] font-semibold text-xs text-center border border-[#CCE6DA]">
                 ✓ Photo Proof Uploaded. Awaiting Customer Escrow Release!
               </div>
             )}
 
             <a
               href={`tel:${activeJob.customerPhone}`}
-              className="inline-flex items-center justify-center gap-1.5 px-4 min-h-[52px] rounded-xl border border-border bg-white text-content font-medium text-xs sm:text-sm hover:bg-surface-subtle transition-all"
+              className="inline-flex items-center justify-center gap-2 px-5 min-h-[52px] rounded-xl border border-[rgba(18,19,22,0.15)] bg-[#F2EFE9] text-[#121316] font-medium text-xs sm:text-sm hover:bg-[#EAE6DE] transition-all"
             >
-              <Phone className="w-4 h-4 text-content-muted" />
+              <Phone className="w-4 h-4 text-[#66676E]" />
               <span>Call Customer</span>
             </a>
           </div>
         </div>
       ) : (
-        <div className="bg-white rounded-2xl p-8 text-center border border-border shadow-subtle">
-          <CheckCircle2 className="w-8 h-8 text-emerald-600 mx-auto mb-2" />
-          <h3 className="font-semibold text-content text-sm">All Current Jobs Completed</h3>
-          <p className="text-xs text-content-muted mt-1">
+        <div className="bg-white rounded-3xl p-10 text-center border border-[rgba(18,19,22,0.08)] shadow-subtle">
+          <CheckCircle2 className="w-10 h-10 text-[#0D2F28] mx-auto mb-3" />
+          <h3 className="font-serif text-xl font-normal text-[#121316]">All Current Jobs Completed</h3>
+          <p className="text-xs text-[#66676E] mt-1 font-light">
             You are ready to receive the next fair allocation from {activeWorker.cooperativeName}.
           </p>
         </div>
       )}
 
       {/* 4. Welfare & Skill Upgradation Banners */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <Link 
           href="/worker/welfare"
-          className="bg-white p-5 rounded-2xl border border-border hover:border-neutral-300 shadow-subtle transition-all flex items-center justify-between group"
+          className="bg-white p-6 rounded-3xl border border-[rgba(18,19,22,0.08)] hover:border-[rgba(18,19,22,0.18)] shadow-subtle transition-all flex items-center justify-between group"
         >
           <div className="space-y-1">
-            <div className="flex items-center gap-2 font-semibold text-xs text-content">
-              <HeartHandshake className="w-4 h-4 text-emerald-600" />
+            <div className="flex items-center gap-2 font-serif text-sm font-normal text-[#121316]">
+              <HeartHandshake className="w-4 h-4 text-[#0D2F28]" />
               <span>Ayushman & Suraksha Health Cover</span>
             </div>
-            <p className="text-[11px] text-content-muted">100% cashless claims enabled for your family.</p>
+            <p className="text-[11px] text-[#66676E] font-light">100% cashless claims enabled for your family.</p>
           </div>
-          <ArrowRight className="w-4 h-4 text-content-muted group-hover:translate-x-0.5 transition-transform" />
+          <ArrowRight className="w-4 h-4 text-[#66676E] group-hover:translate-x-1 transition-transform" />
         </Link>
 
         <Link 
           href="/worker/welfare"
-          className="bg-white p-5 rounded-2xl border border-border hover:border-neutral-300 shadow-subtle transition-all flex items-center justify-between group"
+          className="bg-white p-6 rounded-3xl border border-[rgba(18,19,22,0.08)] hover:border-[rgba(18,19,22,0.18)] shadow-subtle transition-all flex items-center justify-between group"
         >
           <div className="space-y-1">
-            <div className="flex items-center gap-2 font-semibold text-xs text-content">
-              <BookOpen className="w-4 h-4 text-blue-600" />
+            <div className="flex items-center gap-2 font-serif text-sm font-normal text-[#121316]">
+              <BookOpen className="w-4 h-4 text-[#1E3A8A]" />
               <span>PM Kaushal Skill Modules</span>
             </div>
-            <p className="text-[11px] text-content-muted">2 free certified courses with ₹2,000 completion stipend.</p>
+            <p className="text-[11px] text-[#66676E] font-light">2 free certified courses with ₹2,000 completion stipend.</p>
           </div>
-          <ArrowRight className="w-4 h-4 text-content-muted group-hover:translate-x-0.5 transition-transform" />
+          <ArrowRight className="w-4 h-4 text-[#66676E] group-hover:translate-x-1 transition-transform" />
         </Link>
       </div>
 

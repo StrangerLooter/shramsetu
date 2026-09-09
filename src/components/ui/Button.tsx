@@ -2,7 +2,7 @@ import React from 'react';
 import { Loader2 } from 'lucide-react';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'destructive' | 'coop';
+  variant?: 'primary' | 'secondary' | 'teal' | 'outline' | 'ghost' | 'destructive' | 'coop';
   size?: 'sm' | 'md' | 'lg';
   isLoading?: boolean;
   leftIcon?: React.ReactNode;
@@ -20,15 +20,19 @@ export const Button: React.FC<ButtonProps> = ({
   disabled,
   ...props
 }) => {
-  const baseStyles = "inline-flex items-center justify-center font-medium transition-all duration-150 rounded-xl select-none focus:outline-none focus:ring-2 focus:ring-offset-1 disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98]";
+  const baseStyles = "inline-flex items-center justify-center font-medium font-sans transition-all duration-150 rounded-xl select-none focus:outline-none focus:ring-2 focus:ring-offset-1 disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98]";
 
   const variantStyles = {
-    primary: "bg-slate-900 text-white hover:bg-slate-800 focus:ring-slate-950 shadow-subtle",
-    secondary: "bg-surface-subtle text-content hover:bg-surface-hover focus:ring-neutral-300 border border-border/80 shadow-subtle",
-    outline: "bg-transparent text-content hover:bg-surface-subtle focus:ring-neutral-300 border border-border",
-    ghost: "bg-transparent text-content-secondary hover:text-content hover:bg-surface-subtle focus:ring-neutral-200",
-    destructive: "bg-red-600 text-white hover:bg-red-700 focus:ring-red-500 shadow-subtle",
-    coop: "bg-emerald-700 text-white hover:bg-emerald-800 focus:ring-emerald-700 shadow-subtle",
+    // Wispr Flow Inspired Soft Lavender Primary CTA with Dark Text and Thin Border
+    primary: "bg-[#DDD6FE] text-[#121316] border border-[#121316]/20 hover:bg-[#D4CBFC] focus:ring-purple-300 shadow-subtle",
+    // Secondary CTA: Transparent/Cream background with dark border
+    secondary: "bg-transparent text-[#121316] border border-[#121316]/20 hover:bg-black/5 focus:ring-neutral-300",
+    // High-impact Deep Teal CTA
+    teal: "bg-[#0D2F28] text-white border border-[#0D2F28] hover:bg-[#133D34] focus:ring-teal-900 shadow-subtle",
+    outline: "bg-transparent text-[#121316] border border-[#121316]/15 hover:bg-black/5 focus:ring-neutral-200",
+    ghost: "bg-transparent text-content-secondary hover:text-content hover:bg-black/5 focus:ring-neutral-200",
+    destructive: "bg-red-700 text-white hover:bg-red-800 focus:ring-red-600 shadow-subtle",
+    coop: "bg-[#0D2F28] text-white hover:bg-[#133D34] focus:ring-teal-900 shadow-subtle",
   };
 
   const sizeStyles = {

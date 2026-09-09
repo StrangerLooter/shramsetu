@@ -67,8 +67,8 @@ export default function CustomerBookingDetailPage() {
   if (!job) {
     return (
       <div className="max-w-4xl mx-auto px-4 py-16 text-center">
-        <p className="text-sm text-content-muted">Booking not found.</p>
-        <Link href="/customer/bookings" className="text-content font-semibold text-xs mt-2 inline-block">
+        <p className="text-sm text-[#66676E]">Booking not found.</p>
+        <Link href="/customer/bookings" className="text-[#121316] font-semibold text-xs mt-2 inline-block">
           Return to Bookings
         </Link>
       </div>
@@ -115,42 +115,42 @@ export default function CustomerBookingDetailPage() {
   const currentStepIndex = steps.findIndex(s => s.key === job.status);
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8 space-y-6">
+    <div className="max-w-6xl mx-auto px-4 py-10 space-y-6">
       
       {/* Top Breadcrumb & Status Alert */}
       <div className="flex flex-wrap items-center justify-between gap-4">
         <Link 
           href="/customer/bookings"
-          className="text-xs font-medium text-content-muted hover:text-content flex items-center gap-1.5 transition-colors"
+          className="text-xs font-medium text-[#66676E] hover:text-[#121316] flex items-center gap-1.5 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back to All Bookings</span>
         </Link>
 
         {/* Quick Fast-Forward Controller for Evaluators */}
-        <div className="flex items-center gap-1.5 bg-surface-subtle p-1 rounded-xl border border-border text-xs">
-          <span className="text-[11px] text-content-muted font-medium px-2 hidden sm:inline">Simulate Status:</span>
+        <div className="flex items-center gap-1.5 bg-[#F2EFE9] p-1 rounded-2xl border border-[rgba(18,19,22,0.08)] text-xs">
+          <span className="text-[11px] text-[#66676E] font-medium px-2.5 hidden sm:inline">Simulate Status:</span>
           <button
             onClick={() => updateJobStatus(job.id, 'WORKER_ON_THE_WAY')}
-            className={`px-2 py-1 rounded-lg text-[11px] transition-all ${job.status === 'WORKER_ON_THE_WAY' ? 'bg-slate-900 text-white font-medium shadow-2xs' : 'text-content-muted hover:text-content'}`}
+            className={`px-2.5 py-1 rounded-xl text-[11px] transition-all ${job.status === 'WORKER_ON_THE_WAY' ? 'bg-[#121316] text-white font-medium shadow-subtle' : 'text-[#66676E] hover:text-[#121316]'}`}
           >
             On The Way
           </button>
           <button
             onClick={() => updateJobStatus(job.id, 'ARRIVED')}
-            className={`px-2 py-1 rounded-lg text-[11px] transition-all ${job.status === 'ARRIVED' ? 'bg-slate-900 text-white font-medium shadow-2xs' : 'text-content-muted hover:text-content'}`}
+            className={`px-2.5 py-1 rounded-xl text-[11px] transition-all ${job.status === 'ARRIVED' ? 'bg-[#121316] text-white font-medium shadow-subtle' : 'text-[#66676E] hover:text-[#121316]'}`}
           >
             Arrived
           </button>
           <button
             onClick={() => updateJobStatus(job.id, 'IN_PROGRESS')}
-            className={`px-2 py-1 rounded-lg text-[11px] transition-all ${job.status === 'IN_PROGRESS' ? 'bg-slate-900 text-white font-medium shadow-2xs' : 'text-content-muted hover:text-content'}`}
+            className={`px-2.5 py-1 rounded-xl text-[11px] transition-all ${job.status === 'IN_PROGRESS' ? 'bg-[#121316] text-white font-medium shadow-subtle' : 'text-[#66676E] hover:text-[#121316]'}`}
           >
             In Progress
           </button>
           <button
             onClick={() => updateJobStatus(job.id, 'COMPLETED')}
-            className={`px-2 py-1 rounded-lg text-[11px] transition-all ${job.status === 'COMPLETED' ? 'bg-slate-900 text-white font-medium shadow-2xs' : 'text-content-muted hover:text-content'}`}
+            className={`px-2.5 py-1 rounded-xl text-[11px] transition-all ${job.status === 'COMPLETED' ? 'bg-[#121316] text-white font-medium shadow-subtle' : 'text-[#66676E] hover:text-[#121316]'}`}
           >
             Completed
           </button>
@@ -158,17 +158,17 @@ export default function CustomerBookingDetailPage() {
       </div>
 
       {/* Main Booking Header Card */}
-      <div className="bg-white rounded-2xl p-6 border border-border shadow-card space-y-4">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-border/70">
+      <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[rgba(18,19,22,0.08)] shadow-card space-y-5">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-[rgba(18,19,22,0.08)]">
           <div>
             <div className="flex items-center gap-2.5 flex-wrap">
-              <h1 className="font-display text-xl sm:text-2xl font-bold text-content">{job.serviceName}</h1>
-              <span className="text-xs font-mono bg-surface-subtle text-content-muted px-2 py-0.5 rounded border border-border/60">
+              <h1 className="font-serif text-2xl sm:text-3xl font-normal text-[#121316]">{job.serviceName}</h1>
+              <span className="text-xs font-mono bg-[#F2EFE9] text-[#66676E] px-2.5 py-0.5 rounded-md border border-[rgba(18,19,22,0.06)]">
                 #{job.id}
               </span>
               <StatusBadge status={job.status} size="sm" />
             </div>
-            <p className="text-xs sm:text-sm text-content-muted mt-1.5">{job.description}</p>
+            <p className="text-xs sm:text-sm text-[#66676E] mt-1.5 font-light">{job.description}</p>
           </div>
 
           <div className="flex items-center gap-2.5">
@@ -185,7 +185,7 @@ export default function CustomerBookingDetailPage() {
               variant="ghost"
               size="sm"
               onClick={() => setDisputeOpen(true)}
-              leftIcon={<AlertTriangle className="w-3.5 h-3.5 text-amber-500" />}
+              leftIcon={<AlertTriangle className="w-3.5 h-3.5 text-amber-600" />}
             >
               Raise Issue
             </Button>
@@ -194,7 +194,7 @@ export default function CustomerBookingDetailPage() {
 
         {/* Step Progression Timeline */}
         <div className="pt-2">
-          <span className="text-[11px] font-semibold uppercase tracking-wider text-content-muted block mb-3">
+          <span className="text-[11px] font-semibold uppercase tracking-wider text-[#66676E] block mb-3">
             Service Progression
           </span>
           <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-2">
@@ -204,15 +204,15 @@ export default function CustomerBookingDetailPage() {
               return (
                 <div 
                   key={s.key}
-                  className={`p-2 rounded-xl text-center border transition-all duration-150 ${
+                  className={`p-2.5 rounded-2xl text-center border transition-all duration-150 ${
                     isCurrent 
-                      ? 'bg-slate-900 text-white border-slate-900 shadow-2xs' 
+                      ? 'bg-[#121316] text-white border-[#121316] shadow-subtle' 
                       : isPast 
-                      ? 'bg-surface-subtle text-emerald-800 border-border/80' 
-                      : 'bg-white text-content-muted border-border/60 opacity-60'
+                      ? 'bg-[#F2EFE9] text-[#0D2F28] border-[rgba(18,19,22,0.08)]' 
+                      : 'bg-white text-[#66676E] border-[rgba(18,19,22,0.06)] opacity-60'
                   }`}
                 >
-                  <div className="text-[10px] font-semibold uppercase tracking-tighter">
+                  <div className="text-[10px] font-semibold uppercase tracking-tight">
                     {isPast ? '✓ Done' : isCurrent ? '● Active' : `${idx + 1}`}
                   </div>
                   <div className="text-[11px] font-medium truncate mt-0.5">{s.label}</div>
@@ -240,10 +240,10 @@ export default function CustomerBookingDetailPage() {
 
           {/* If Job is COMPLETED -> Show Photographic Inspection Proof with Before/After Slider & Escrow Payment Button */}
           {job.status === 'COMPLETED' && (
-            <div className="bg-white rounded-2xl p-6 border border-emerald-300 shadow-card space-y-4">
+            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#CCE6DA] shadow-card space-y-5">
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 text-content font-semibold text-sm">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+                <div className="flex items-center gap-2 text-[#0D2F28] font-semibold text-sm">
+                  <CheckCircle2 className="w-5 h-5 text-[#0D2F28]" />
                   <span>Work Completed & Photographic Evidence Verified</span>
                 </div>
                 <VoiceReaderButton 
@@ -261,15 +261,15 @@ export default function CustomerBookingDetailPage() {
                 notes={job.completionProof?.notes || 'Repaired sink joint, verified zero leakage under pressure.'}
               />
 
-              {/* Instant Escrow Settlement Action */}
-              <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              {/* Instant Escrow Settlement Action in Soft Lavender */}
+              <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
-                  <span className="text-xs text-content-muted block">Total Settlement Amount</span>
-                  <span className="text-xl font-bold text-content">₹{job.pricing.customerTotal}</span>
+                  <span className="text-xs text-[#66676E] block">Total Settlement Amount</span>
+                  <span className="font-serif text-2xl font-semibold text-[#121316]">₹{job.pricing.customerTotal}</span>
                 </div>
 
                 <Button
-                  variant="coop"
+                  variant="primary"
                   size="lg"
                   onClick={() => {
                     settleJobPayment(job.id);
@@ -288,7 +288,7 @@ export default function CustomerBookingDetailPage() {
                       language === 'hi' ? 'hi' : 'en'
                     );
                   }}
-                  leftIcon={<CreditCard className="w-4 h-4" />}
+                  leftIcon={<CreditCard className="w-4 h-4 text-[#121316]" />}
                 >
                   Confirm Satisfaction & Release Escrow
                 </Button>
@@ -298,29 +298,29 @@ export default function CustomerBookingDetailPage() {
 
           {/* If Job is PAYMENT_SETTLED -> Show Rating & Review submission */}
           {job.status === 'PAYMENT_SETTLED' && (
-            <div className="bg-white rounded-2xl p-6 border border-border shadow-card space-y-4">
-              <div className="flex items-center gap-2 text-content font-semibold text-sm">
-                <ShieldCheck className="w-5 h-5 text-emerald-600" />
+            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[rgba(18,19,22,0.08)] shadow-card space-y-4">
+              <div className="flex items-center gap-2 text-[#0D2F28] font-semibold text-sm">
+                <ShieldCheck className="w-5 h-5 text-[#0D2F28]" />
                 <span>Payment Settled • Leave Worker Review</span>
               </div>
 
               {ratingSubmitted || job.customerRating ? (
-                <div className="p-4 bg-surface-subtle rounded-xl border border-border text-xs text-content space-y-1">
-                  <div className="flex items-center gap-1 font-semibold text-emerald-800">
-                    <Check className="w-4 h-4 text-emerald-600" />
+                <div className="p-4 bg-[#F2EFE9] rounded-2xl border border-[rgba(18,19,22,0.08)] text-xs text-[#121316] space-y-1">
+                  <div className="flex items-center gap-1.5 font-semibold text-[#0D2F28]">
+                    <Check className="w-4 h-4 text-[#0D2F28]" />
                     <span>Review Submitted Successfully!</span>
                   </div>
-                  <p className="text-content-muted">
+                  <p className="text-[#66676E] font-light">
                     "{job.customerRating?.comment || ratingComment}"
                   </p>
                 </div>
               ) : (
                 <form onSubmit={handleRatingSubmit} className="space-y-3">
                   <div>
-                    <label className="block text-xs font-semibold text-content-secondary uppercase tracking-wider mb-1">
+                    <label className="block text-xs font-semibold text-[#121316] uppercase tracking-wider mb-2">
                       Rate Worker Craftsmanship & Professionalism
                     </label>
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-1.5">
                       {[1, 2, 3, 4, 5].map((star) => (
                         <button
                           key={star}
@@ -328,7 +328,7 @@ export default function CustomerBookingDetailPage() {
                           onClick={() => setRatingOverall(star)}
                           className="p-1 text-amber-400 hover:scale-110 transition-transform"
                         >
-                          <Star className={`w-6 h-6 ${star <= ratingOverall ? 'fill-amber-400' : 'text-neutral-300'}`} />
+                          <Star className={`w-6 h-6 ${star <= ratingOverall ? 'fill-amber-400 text-amber-400' : 'text-neutral-300'}`} />
                         </button>
                       ))}
                     </div>
@@ -338,7 +338,7 @@ export default function CustomerBookingDetailPage() {
                     value={ratingComment}
                     onChange={(e) => setRatingComment(e.target.value)}
                     rows={2}
-                    className="w-full p-2.5 text-xs rounded-xl border border-border bg-white text-content focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-800"
+                    className="w-full p-3 text-xs rounded-2xl border border-[rgba(18,19,22,0.12)] bg-white text-[#121316] focus:outline-none focus:ring-2 focus:ring-[#121316]/10 focus:border-[#121316]"
                   />
 
                   <Button type="submit" variant="primary" size="sm">
@@ -351,50 +351,50 @@ export default function CustomerBookingDetailPage() {
 
           {/* In-App Chat Modal / Drawer */}
           {chatOpen && (
-            <div className="bg-white rounded-2xl p-4 border border-border shadow-float space-y-3">
-              <div className="flex items-center justify-between pb-2 border-b border-border/70">
+            <div className="bg-white rounded-3xl p-5 border border-[rgba(18,19,22,0.12)] shadow-float space-y-3">
+              <div className="flex items-center justify-between pb-2.5 border-b border-[rgba(18,19,22,0.08)]">
                 <div className="flex items-center gap-2">
-                  <MessageSquare className="w-4 h-4 text-slate-800" />
-                  <span className="font-semibold text-xs text-content">Direct Worker Chat ({job.workerName})</span>
+                  <MessageSquare className="w-4 h-4 text-[#121316]" />
+                  <span className="font-semibold text-xs text-[#121316]">Direct Worker Chat ({job.workerName})</span>
                 </div>
                 <button 
                   onClick={() => setChatOpen(false)}
-                  className="text-xs text-content-muted hover:text-content"
+                  className="text-xs text-[#66676E] hover:text-[#121316]"
                 >
                   Close
                 </button>
               </div>
 
-              <div className="h-44 overflow-y-auto space-y-2 p-1 text-xs">
+              <div className="h-48 overflow-y-auto space-y-2.5 p-1 text-xs">
                 {chatHistory.map((msg, i) => (
                   <div 
                     key={i} 
                     className={`flex flex-col ${msg.sender === 'customer' ? 'items-end' : 'items-start'}`}
                   >
                     <div 
-                      className={`max-w-[80%] p-2.5 rounded-xl ${
+                      className={`max-w-[80%] p-3 rounded-2xl ${
                         msg.sender === 'customer' 
-                          ? 'bg-slate-900 text-white rounded-br-none' 
-                          : 'bg-surface-subtle text-content rounded-bl-none border border-border/60'
+                          ? 'bg-[#121316] text-white rounded-br-none' 
+                          : 'bg-[#F2EFE9] text-[#121316] rounded-bl-none border border-[rgba(18,19,22,0.06)]'
                       }`}
                     >
                       {msg.text}
                     </div>
-                    <span className="text-[10px] text-content-muted mt-0.5 px-1">{msg.time}</span>
+                    <span className="text-[10px] text-[#66676E] mt-0.5 px-1">{msg.time}</span>
                   </div>
                 ))}
               </div>
 
-              <form onSubmit={handleSendMessage} className="flex gap-2 pt-1 border-t border-border/70">
+              <form onSubmit={handleSendMessage} className="flex gap-2 pt-2 border-t border-[rgba(18,19,22,0.08)]">
                 <input
                   type="text"
                   value={chatMessage}
                   onChange={(e) => setChatMessage(e.target.value)}
                   placeholder="Type message to worker..."
-                  className="flex-1 px-3 py-1.5 text-xs rounded-xl border border-border bg-white text-content focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-800"
+                  className="flex-1 px-3.5 py-2 text-xs rounded-xl border border-[rgba(18,19,22,0.12)] bg-white text-[#121316] focus:outline-none focus:ring-2 focus:ring-[#121316]/10 focus:border-[#121316]"
                 />
                 <Button type="submit" variant="primary" size="sm">
-                  <Send className="w-3.5 h-3.5" />
+                  <Send className="w-3.5 h-3.5 text-[#121316]" />
                 </Button>
               </form>
             </div>
@@ -402,22 +402,22 @@ export default function CustomerBookingDetailPage() {
 
           {/* Raise Dispute Modal */}
           {disputeOpen && (
-            <div className="bg-white rounded-2xl p-5 border border-red-200 shadow-float space-y-4">
+            <div className="bg-white rounded-3xl p-6 border border-red-200 shadow-float space-y-4">
               <div className="flex items-center justify-between">
                 <h4 className="font-semibold text-xs text-red-900 flex items-center gap-1.5">
                   <AlertTriangle className="w-4 h-4 text-red-600" />
                   Raise Grievance / Dispute to Cooperative Admin
                 </h4>
-                <button onClick={() => setDisputeOpen(false)} className="text-xs text-content-muted">Cancel</button>
+                <button onClick={() => setDisputeOpen(false)} className="text-xs text-[#66676E]">Cancel</button>
               </div>
 
               <form onSubmit={handleRaiseDispute} className="space-y-3">
                 <div>
-                  <label className="block text-xs font-semibold text-content-secondary mb-1">Reason for Dispute</label>
+                  <label className="block text-xs font-semibold text-[#121316] mb-1">Reason for Dispute</label>
                   <select
                     value={disputeReason}
                     onChange={(e) => setDisputeReason(e.target.value)}
-                    className="w-full p-2 text-xs rounded-xl border border-border bg-white"
+                    className="w-full p-2.5 text-xs rounded-xl border border-[rgba(18,19,22,0.12)] bg-white"
                   >
                     <option>Work not completed</option>
                     <option>Poor craftsmanship quality</option>
@@ -428,13 +428,13 @@ export default function CustomerBookingDetailPage() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-content-secondary mb-1">Detailed Description</label>
+                  <label className="block text-xs font-semibold text-[#121316] mb-1">Detailed Description</label>
                   <textarea
                     value={disputeNotes}
                     onChange={(e) => setDisputeNotes(e.target.value)}
                     rows={2}
                     placeholder="Provide details for the cooperative arbitration desk..."
-                    className="w-full p-2 text-xs rounded-xl border border-border bg-white"
+                    className="w-full p-2.5 text-xs rounded-xl border border-[rgba(18,19,22,0.12)] bg-white"
                   />
                 </div>
 
@@ -450,44 +450,44 @@ export default function CustomerBookingDetailPage() {
         <div className="lg:col-span-5 space-y-6">
           
           {/* Worker Profile Card */}
-          <div className="bg-white rounded-2xl p-5 border border-border shadow-card space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-border/70">
-              <span className="text-xs font-semibold text-content-muted uppercase tracking-wider">
+          <div className="bg-white rounded-3xl p-6 border border-[rgba(18,19,22,0.08)] shadow-card space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-[rgba(18,19,22,0.08)]">
+              <span className="text-xs font-semibold text-[#66676E] uppercase tracking-wider">
                 Assigned Cooperative Artisan
               </span>
-              <span className="text-[11px] bg-emerald-50 text-emerald-800 font-medium px-2 py-0.5 rounded-full border border-emerald-200/60">
+              <span className="text-[11px] bg-[#EBF5F0] text-[#0D2F28] font-semibold px-2.5 py-0.5 rounded-full border border-[#CCE6DA]">
                 ✓ Govt Verified
               </span>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3.5">
               <img 
                 src={job.workerAvatar || 'https://images.unsplash.com/photo-1540569014015-19a7be504e3a?w=150&auto=format&fit=crop&q=80'} 
                 alt={job.workerName || 'Worker'} 
-                className="w-13 h-13 rounded-full object-cover border border-border shadow-2xs"
+                className="w-14 h-14 rounded-full object-cover border border-[rgba(18,19,22,0.08)] shadow-subtle"
               />
               <div>
-                <h3 className="font-semibold text-content text-sm">{job.workerName || 'Amit Verma'}</h3>
-                <p className="text-xs text-content-muted">{job.cooperativeName}</p>
+                <h3 className="font-serif text-lg font-normal text-[#121316]">{job.workerName || 'Amit Verma'}</h3>
+                <p className="text-xs text-[#66676E]">{job.cooperativeName}</p>
                 <div className="flex items-center gap-2 mt-1 text-xs">
                   <span className="flex items-center gap-1 font-semibold text-amber-600">
                     <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
                     {job.workerRating || 4.8}
                   </span>
-                  <span className="text-content-muted">•</span>
-                  <span className="text-content-muted">{assignedWorker.completedJobsTotal || 148} Jobs Completed</span>
+                  <span className="text-[#66676E]">•</span>
+                  <span className="text-[#66676E] font-light">{assignedWorker.completedJobsTotal || 148} Jobs Completed</span>
                 </div>
               </div>
             </div>
 
-            {/* Verification badges */}
-            <div className="space-y-1.5 pt-2 text-xs border-t border-border/70 text-content-secondary">
+            {/* Verification Badges */}
+            <div className="space-y-1.5 pt-2 text-xs border-t border-[rgba(18,19,22,0.08)] text-[#121316]">
               <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#0D2F28]" />
                 <span>Govt ITI Trade Certified</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#0D2F28]" />
                 <span>Ayushman Health & Suraksha Active</span>
               </div>
             </div>
@@ -497,7 +497,7 @@ export default function CustomerBookingDetailPage() {
               variant="primary"
               size="sm"
               onClick={() => setIdModalOpen(true)}
-              leftIcon={<ShieldCheck className="w-4 h-4 text-emerald-400" />}
+              leftIcon={<ShieldCheck className="w-4 h-4 text-[#121316]" />}
               className="w-full"
             >
               Verify Digital QR Gate Pass (e-Shram)

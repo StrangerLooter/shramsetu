@@ -9,74 +9,85 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        canvas: '#FAFAF9', // Calm warm neutral background
+        // Wispr Flow Inspired Editorial Palette
+        canvas: '#FBF9F5', // Soft warm cream/off-white primary page background
+        cream: {
+          DEFAULT: '#FBF9F5',
+          subtle: '#F6F3EB',
+          surface: '#FFFFFF',
+          card: '#FFFFFF',
+          border: 'rgba(18, 19, 22, 0.08)',
+        },
+        charcoal: {
+          DEFAULT: '#121316', // Deep near-black for primary text
+          secondary: '#2C2D31',
+          muted: '#66676E',
+          subtle: '#9D9EA5',
+        },
         surface: {
           DEFAULT: '#FFFFFF',
-          subtle: '#F4F4F1',
-          hover: '#F0F0EC',
+          cream: '#FBF9F5',
+          beige: '#F2EFE9',
+          subtle: '#F6F3EC',
+          hover: '#EDE9E0',
         },
         content: {
-          DEFAULT: '#09090B',
-          secondary: '#3F3F46',
-          muted: '#71717A',
-          subtle: '#A1A1AA',
+          DEFAULT: '#121316',
+          secondary: '#36373D',
+          muted: '#696A72',
+          subtle: '#9A9BA2',
         },
         border: {
-          DEFAULT: '#E4E4E7',
-          subtle: '#F1F1F0',
-          dark: '#27272A',
+          DEFAULT: 'rgba(18, 19, 22, 0.10)',
+          subtle: 'rgba(18, 19, 22, 0.06)',
+          strong: 'rgba(18, 19, 22, 0.20)',
+          dark: 'rgba(255, 255, 255, 0.15)',
         },
-        civic: {
-          50: '#F8FAFC',
-          100: '#F1F5F9',
-          200: '#E2E8F0',
-          300: '#CBD5E1',
-          400: '#94A3B8',
-          500: '#64748B',
-          600: '#475569',
-          700: '#334155',
-          800: '#1E293B',
-          900: '#0F172A',
-          950: '#020617',
+        // Deep Teal / Forest Green for high-impact showcase sections
+        teal: {
+          deep: '#0D2F28',
+          surface: '#133D34',
+          subtle: '#1C4A40',
+          border: 'rgba(255, 255, 255, 0.12)',
         },
-        brand: {
-          50: '#F0F5FF',
-          100: '#E0EBFF',
-          500: '#3B82F6',
-          600: '#2563EB',
-          700: '#1D4ED8',
-          800: '#1E3A8A',
-          900: '#0F172A',
-          950: '#090D1A',
+        // Soft Lavender / Light Purple for primary CTAs and interactive accents
+        lavender: {
+          DEFAULT: '#DDD6FE',
+          accent: '#E2DCFD',
+          hover: '#D4CBFC',
+          soft: '#F1EDFD',
+          border: 'rgba(18, 19, 22, 0.20)',
+        },
+        // Muted Beige / Gray-green for secondary cards & subtle backgrounds
+        beige: {
+          DEFAULT: '#F2EFE9',
+          subtle: '#F7F5F0',
+          dark: '#E7E3DA',
+          card: '#FAF8F4',
         },
         coop: {
-          50: '#F0FDF4',
-          100: '#DCFCE7',
-          200: '#BBF7D0',
+          50: '#F2F9F6',
+          100: '#E1F3EC',
+          200: '#C2E7D9',
           500: '#10B981',
-          600: '#059669',
-          700: '#047857',
-          800: '#065F46',
-          900: '#064E3B',
+          600: '#0D2F28',
+          700: '#0A2721',
+          800: '#071F1A',
+          900: '#041512',
         },
-        worker: {
-          50: '#FFFBEB',
-          100: '#FEF3C7',
-          200: '#FDE68A',
-          500: '#F59E0B',
-          600: '#D97706',
-          700: '#B45309',
-        }
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        display: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
+        serif: ['Newsreader', 'Cormorant Garamond', 'Georgia', 'serif'],
+        display: ['Newsreader', 'Playfair Display', 'serif'],
+        ui: ['Inter', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        'subtle': '0 1px 2px 0 rgba(0, 0, 0, 0.04)',
-        'card': '0 1px 3px 0 rgba(0, 0, 0, 0.03), 0 1px 2px -1px rgba(0, 0, 0, 0.03)',
-        'float': '0 8px 24px -4px rgba(0, 0, 0, 0.06)',
-        'premium': '0 12px 32px -8px rgba(0, 0, 0, 0.06)',
+        'subtle': '0 1px 2px 0 rgba(18, 19, 22, 0.03)',
+        'card': '0 1px 3px 0 rgba(18, 19, 22, 0.04), 0 1px 2px -1px rgba(18, 19, 22, 0.03)',
+        'float': '0 8px 24px -4px rgba(18, 19, 22, 0.06)',
+        'premium': '0 16px 40px -8px rgba(18, 19, 22, 0.08)',
+        'teal': '0 12px 32px -8px rgba(13, 47, 40, 0.25)',
       }
     },
   },

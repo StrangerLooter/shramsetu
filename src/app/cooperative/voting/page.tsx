@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useApp } from '@/lib/store/app-store';
 import { 
   Vote, 
-  ShieldCheck
+  ShieldCheck 
 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 
@@ -80,25 +80,29 @@ export default function CooperativeVotingPage() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-8 space-y-6">
+    <div className="max-w-5xl mx-auto px-4 py-12 sm:py-16 space-y-8">
       
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2 text-xs font-semibold text-emerald-800 uppercase tracking-wider">
-            <Vote className="w-4 h-4 text-emerald-600" />
+          <div className="flex items-center gap-2 text-xs font-semibold text-[#0D2F28] uppercase tracking-wider">
+            <Vote className="w-4 h-4 text-[#0D2F28]" />
             <span>Democratic Governance & Member Self-Rule</span>
           </div>
-          <h1 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-content mt-1">
-            {language === 'hi' ? 'सहकारी जनमत एवं मतदान मंच' : 'Cooperative Democratic Voting & Resolutions'}
+          <h1 className="font-serif text-3xl sm:text-4xl font-normal tracking-tight text-[#121316] mt-1">
+            {language === 'hi' ? (
+              <>सहकारी जनमत <span className="font-serif italic font-normal">एवं मतदान मंच</span></>
+            ) : (
+              <>Cooperative Democratic <span className="font-serif italic font-normal">Voting & Resolutions</span></>
+            )}
           </h1>
-          <p className="text-xs sm:text-sm text-content-muted mt-1">
+          <p className="text-xs sm:text-sm text-[#66676E] mt-1 font-light">
             One Member, One Vote: Every artisan directly shapes minimum wage rules, safety expenditures, and tool capital assets.
           </p>
         </div>
 
-        <div className="bg-surface-subtle px-3.5 py-2 rounded-xl border border-border text-xs font-medium text-content flex items-center gap-1.5 self-start">
-          <ShieldCheck className="w-4 h-4 text-emerald-600" />
+        <div className="bg-[#EBF5F0] px-4 py-2 rounded-full border border-[#CCE6DA] text-xs font-medium text-[#0D2F28] flex items-center gap-1.5 self-start">
+          <ShieldCheck className="w-4 h-4 text-[#0D2F28]" />
           <span>Quorum: 84% Member Turnout</span>
         </div>
       </div>
@@ -113,45 +117,45 @@ export default function CooperativeVotingPage() {
           return (
             <div 
               key={res.id} 
-              className="bg-white rounded-2xl p-6 border border-border shadow-card space-y-4 hover:border-neutral-300 transition-all duration-150"
+              className="bg-white rounded-3xl p-6 sm:p-8 border border-[rgba(18,19,22,0.08)] shadow-subtle hover:shadow-card hover:border-[rgba(18,19,22,0.18)] transition-all duration-150 space-y-4"
             >
-              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 pb-3 border-b border-border/70">
+              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 pb-3 border-b border-[rgba(18,19,22,0.08)]">
                 <div>
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className="text-[10px] font-semibold uppercase tracking-wider bg-surface-subtle text-content px-2 py-0.5 rounded border border-border/60">
+                    <span className="text-[10px] font-semibold uppercase tracking-wider bg-[#F2EFE9] text-[#121316] px-2.5 py-0.5 rounded-full border border-[rgba(18,19,22,0.06)]">
                       {res.category}
                     </span>
-                    <span className="text-xs font-mono text-content-muted">{res.id}</span>
-                    <span className={`text-[10px] font-semibold px-2 py-0.5 rounded ${res.status === 'PASSED' ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' : 'bg-surface-subtle text-content border border-border'}`}>
+                    <span className="text-xs font-mono text-[#66676E]">{res.id}</span>
+                    <span className={`text-[10px] font-semibold px-2.5 py-0.5 rounded-full ${res.status === 'PASSED' ? 'bg-[#EBF5F0] text-[#0D2F28] border border-[#CCE6DA]' : 'bg-[#F2EFE9] text-[#121316] border border-[rgba(18,19,22,0.08)]'}`}>
                       {res.status}
                     </span>
                   </div>
-                  <h3 className="text-base font-semibold text-content mt-1.5">{res.title}</h3>
+                  <h3 className="font-serif text-lg font-normal text-[#121316] mt-2">{res.title}</h3>
                 </div>
 
                 <div className="sm:text-right shrink-0">
-                  <span className="text-[11px] text-content-muted block">{res.deadline}</span>
-                  <span className="text-xs font-medium text-content">
+                  <span className="text-[11px] text-[#66676E] block font-light">{res.deadline}</span>
+                  <span className="text-xs font-medium text-[#121316]">
                     {totalVotes} of {res.totalEligibleMembers} Voted
                   </span>
                 </div>
               </div>
 
-              <p className="text-xs sm:text-sm text-content-muted leading-relaxed">{res.description}</p>
+              <p className="text-xs sm:text-sm text-[#66676E] leading-relaxed font-light">{res.description}</p>
               
-              <div className="text-[11px] text-content-muted">
-                Proposed by: <strong className="text-content font-medium">{res.proposedBy}</strong>
+              <div className="text-[11px] text-[#66676E]">
+                Proposed by: <strong className="text-[#121316] font-medium">{res.proposedBy}</strong>
               </div>
 
               {/* Vote Progression Bar */}
               <div className="space-y-1.5 pt-1">
                 <div className="flex items-center justify-between text-xs">
-                  <span className="font-semibold text-emerald-800">{forPercentage}% For ({res.votesFor} votes)</span>
-                  <span className="text-content-muted">{res.votesAgainst} Against</span>
+                  <span className="font-semibold text-[#0D2F28]">{forPercentage}% For ({res.votesFor} votes)</span>
+                  <span className="text-[#66676E]">{res.votesAgainst} Against</span>
                 </div>
-                <div className="w-full bg-neutral-200 h-1.5 rounded-full overflow-hidden">
+                <div className="w-full bg-[#E2DDD3] h-1.5 rounded-full overflow-hidden">
                   <div 
-                    className="bg-emerald-700 h-full rounded-full transition-all duration-500"
+                    className="bg-[#0D2F28] h-full rounded-full transition-all duration-500" 
                     style={{ width: `${forPercentage}%` }}
                   />
                 </div>
@@ -159,22 +163,22 @@ export default function CooperativeVotingPage() {
 
               {/* Vote Actions */}
               {res.status === 'ACTIVE' && (
-                <div className="pt-2 flex items-center justify-between border-t border-border/70">
+                <div className="pt-3 flex items-center justify-between border-t border-[rgba(18,19,22,0.08)]">
                   {hasVoted ? (
-                    <span className="text-xs font-semibold text-emerald-800 bg-surface-subtle px-3 py-1.5 rounded-lg border border-border">
+                    <span className="text-xs font-semibold text-[#0D2F28] bg-[#EBF5F0] px-3.5 py-1.5 rounded-xl border border-[#CCE6DA]">
                       ✓ You voted {hasVoted} this resolution
                     </span>
                   ) : (
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2.5">
                       <Button
-                        variant="coop"
+                        variant="primary"
                         size="sm"
                         onClick={() => handleVote(res.id, 'FOR')}
                       >
                         Vote In Favor (हाँ)
                       </Button>
                       <Button
-                        variant="outline"
+                        variant="secondary"
                         size="sm"
                         onClick={() => handleVote(res.id, 'AGAINST')}
                       >
@@ -183,7 +187,7 @@ export default function CooperativeVotingPage() {
                     </div>
                   )}
 
-                  <span className="text-[11px] text-content-muted">Anonymous encrypted member ballot</span>
+                  <span className="text-[11px] text-[#66676E] font-light">Anonymous encrypted member ballot</span>
                 </div>
               )}
             </div>

@@ -32,73 +32,73 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
         return {
           label: 'Request Received',
           icon: <Clock className="w-3 h-3" />,
-          styles: 'bg-neutral-100 text-neutral-800 border-neutral-200'
+          styles: 'bg-[#F2EFE9] text-[#121316] border-[rgba(18,19,22,0.10)]'
         };
       case 'MATCHING':
         return {
           label: 'Finding Worker',
           icon: <Search className="w-3 h-3 animate-spin" />,
-          styles: 'bg-amber-50 text-amber-800 border-amber-200'
+          styles: 'bg-[#FAF3E8] text-[#78541A] border-[#E8DDC9]'
         };
       case 'ASSIGNED':
         return {
           label: 'Worker Assigned',
           icon: <UserCheck className="w-3 h-3" />,
-          styles: 'bg-blue-50 text-blue-800 border-blue-200'
+          styles: 'bg-[#EDE8FC] text-[#3D2975] border-[#DDD6FE]'
         };
       case 'ACCEPTED':
         return {
           label: 'Job Accepted',
           icon: <Check className="w-3 h-3" />,
-          styles: 'bg-indigo-50 text-indigo-800 border-indigo-200'
+          styles: 'bg-[#EBF5F0] text-[#0D2F28] border-[#CCE6DA]'
         };
       case 'WORKER_ON_THE_WAY':
         return {
           label: 'Worker On The Way',
           icon: <Navigation className="w-3 h-3 animate-pulse" />,
-          styles: 'bg-sky-50 text-sky-800 border-sky-200'
+          styles: 'bg-[#EDF4F8] text-[#1D4A66] border-[#D1E3EE]'
         };
       case 'ARRIVED':
         return {
           label: 'Worker Arrived',
           icon: <MapPin className="w-3 h-3" />,
-          styles: 'bg-emerald-50 text-emerald-800 border-emerald-200'
+          styles: 'bg-[#EBF5F0] text-[#0D2F28] border-[#CCE6DA]'
         };
       case 'IN_PROGRESS':
         return {
           label: 'In Progress',
           icon: <Wrench className="w-3 h-3 animate-spin" />,
-          styles: 'bg-blue-50 text-blue-900 border-blue-200'
+          styles: 'bg-[#EDE8FC] text-[#3D2975] border-[#DDD6FE]'
         };
       case 'COMPLETED':
         return {
           label: 'Work Completed',
           icon: <CheckCircle2 className="w-3 h-3" />,
-          styles: 'bg-emerald-50 text-emerald-800 border-emerald-200'
+          styles: 'bg-[#EBF5F0] text-[#0D2F28] border-[#CCE6DA]'
         };
       case 'PAYMENT_SETTLED':
         return {
           label: 'Payment Settled',
-          icon: <ShieldCheck className="w-3 h-3" />,
-          styles: 'bg-emerald-50 text-emerald-900 border-emerald-300 font-semibold'
+          icon: <ShieldCheck className="w-3 h-3 text-[#0D2F28]" />,
+          styles: 'bg-[#EBF5F0] text-[#0D2F28] border-[#0D2F28]/30 font-semibold'
         };
       case 'DISPUTED':
         return {
           label: 'Disputed',
           icon: <AlertTriangle className="w-3 h-3" />,
-          styles: 'bg-red-50 text-red-800 border-red-200'
+          styles: 'bg-[#FAECEB] text-[#782823] border-[#EAC2BF]'
         };
       case 'CANCELLED':
         return {
           label: 'Cancelled',
           icon: <XCircle className="w-3 h-3" />,
-          styles: 'bg-neutral-100 text-neutral-600 border-neutral-200'
+          styles: 'bg-[#F2EFE9] text-[#66676E] border-[rgba(18,19,22,0.10)]'
         };
       default:
         return {
           label: s,
           icon: <Clock className="w-3 h-3" />,
-          styles: 'bg-neutral-100 text-neutral-700 border-neutral-200'
+          styles: 'bg-[#F2EFE9] text-[#121316] border-[rgba(18,19,22,0.10)]'
         };
     }
   };
@@ -109,7 +109,7 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
     : 'text-xs px-2.5 py-1 gap-1.5 font-medium';
 
   return (
-    <span className={`inline-flex items-center rounded-full border shadow-2xs select-none ${sizeStyles} ${config.styles} ${className}`}>
+    <span className={`inline-flex items-center rounded-full border select-none ${sizeStyles} ${config.styles} ${className}`}>
       {config.icon}
       <span>{config.label}</span>
     </span>

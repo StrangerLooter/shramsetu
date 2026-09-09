@@ -6,7 +6,7 @@ import { ShieldCheck, HeartHandshake, CheckCircle2, TrendingUp } from 'lucide-re
 export const WageComparisonCalculator: React.FC = () => {
   const [jobAmount, setJobAmount] = useState<number>(500);
 
-  // Calculations for Private Aggregator App (e.g. Urban Company / typical gig app)
+  // Calculations for Private Aggregator App (e.g. typical gig app)
   const privateCommission = Math.round(jobAmount * 0.30); // 30% cut
   const privateSurgeFee = 50; // extra customer platform fee
   const privateCustomerTotal = jobAmount + privateSurgeFee;
@@ -18,26 +18,26 @@ export const WageComparisonCalculator: React.FC = () => {
   const shramSetuCustomerTotal = jobAmount; // No surge
 
   return (
-    <div className="bg-white rounded-2xl p-6 sm:p-8 border border-border shadow-card space-y-6">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-border/70">
+    <div className="bg-white/95 text-[#121316] rounded-3xl p-6 sm:p-10 border border-[rgba(18,19,22,0.10)] shadow-card space-y-8">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-6 border-b border-[rgba(18,19,22,0.08)]">
         <div>
-          <span className="text-xs font-semibold uppercase tracking-wider text-emerald-800 flex items-center gap-1.5">
-            <ShieldCheck className="w-4 h-4 text-emerald-600" />
+          <span className="text-xs font-semibold uppercase tracking-wider text-[#0D2F28] flex items-center gap-1.5">
+            <ShieldCheck className="w-4 h-4 text-[#0D2F28]" />
             <span>Interactive Transparency Model</span>
           </span>
-          <h3 className="font-display text-xl sm:text-2xl font-bold text-content mt-1">
-            Compare: ShramSetu vs Commercial Aggregators
+          <h3 className="font-serif text-2xl sm:text-3xl font-normal text-[#121316] mt-1">
+            Compare <span className="font-serif italic font-normal">ShramSetu</span> vs Conventional Gig Apps
           </h3>
-          <p className="text-xs sm:text-sm text-content-muted mt-0.5">
+          <p className="text-xs sm:text-sm text-[#66676E] mt-1">
             Slide to see how cooperative dispatches protect worker earnings and save customer expenses.
           </p>
         </div>
 
         {/* Amount Picker Slider */}
-        <div className="bg-surface-subtle p-3 rounded-xl border border-border space-y-1.5 min-w-[220px]">
-          <div className="flex justify-between text-xs font-semibold">
-            <span className="text-content-muted">Service Base:</span>
-            <span className="text-content text-sm">₹{jobAmount}</span>
+        <div className="bg-[#F2EFE9] p-4 rounded-2xl border border-[rgba(18,19,22,0.08)] space-y-2 min-w-[240px]">
+          <div className="flex justify-between text-xs font-medium">
+            <span className="text-[#66676E]">Service Base:</span>
+            <span className="font-serif text-base font-semibold text-[#121316]">₹{jobAmount}</span>
           </div>
           <input 
             type="range" 
@@ -46,9 +46,9 @@ export const WageComparisonCalculator: React.FC = () => {
             step="50"
             value={jobAmount}
             onChange={(e) => setJobAmount(Number(e.target.value))}
-            className="w-full h-1.5 bg-neutral-200 rounded-lg appearance-none cursor-pointer accent-slate-900"
+            className="w-full h-1.5 bg-[#E2DDD3] rounded-lg appearance-none cursor-pointer accent-[#121316]"
           />
-          <div className="flex justify-between text-[10px] text-content-muted">
+          <div className="flex justify-between text-[10px] text-[#66676E]">
             <span>₹300 (Basic)</span>
             <span>₹2,000 (Major)</span>
           </div>
@@ -56,78 +56,78 @@ export const WageComparisonCalculator: React.FC = () => {
       </div>
 
       {/* Side-by-Side Comparison Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         
         {/* Commercial App (Predatory) */}
-        <div className="rounded-xl p-5 bg-surface-subtle border border-border space-y-4">
+        <div className="rounded-2xl p-6 bg-[#F2EFE9] border border-[rgba(18,19,22,0.08)] space-y-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2 text-content font-semibold text-xs sm:text-sm">
-              <span className="w-5 h-5 rounded-full bg-neutral-200 text-content-secondary flex items-center justify-center text-xs">✕</span>
-              <span>Commercial Aggregator Apps</span>
+            <div className="flex items-center gap-2 text-[#121316] font-medium text-xs sm:text-sm">
+              <span className="w-5 h-5 rounded-full bg-[#E2DDD3] text-[#121316] flex items-center justify-center text-xs">✕</span>
+              <span>Conventional Aggregators</span>
             </div>
-            <span className="text-[10px] bg-white text-content-secondary font-medium px-2 py-0.5 rounded border border-border/60">
+            <span className="text-[10px] bg-white text-[#66676E] font-medium px-2.5 py-0.5 rounded-full border border-[rgba(18,19,22,0.08)]">
               30% Commission Cut
             </span>
           </div>
 
           <div className="space-y-2 text-xs">
-            <div className="flex justify-between p-2.5 rounded-lg bg-white border border-border/70">
-              <span className="text-content-muted">Customer Bill (with surge/convenience fee):</span>
-              <span className="font-semibold text-content">₹{privateCustomerTotal}</span>
+            <div className="flex justify-between p-3 rounded-xl bg-white border border-[rgba(18,19,22,0.06)]">
+              <span className="text-[#66676E]">Customer Bill (with surge/fees):</span>
+              <span className="font-semibold text-[#121316]">₹{privateCustomerTotal}</span>
             </div>
 
-            <div className="flex justify-between p-2.5 rounded-lg bg-white border border-border/70">
-              <span className="text-content-muted">Middleman Commission Deducted:</span>
-              <span className="font-semibold text-red-600">-₹{privateCommission}</span>
+            <div className="flex justify-between p-3 rounded-xl bg-white border border-[rgba(18,19,22,0.06)]">
+              <span className="text-[#66676E]">Middleman Cut Deducted:</span>
+              <span className="font-semibold text-red-700">-₹{privateCommission}</span>
             </div>
 
-            <div className="flex justify-between p-2.5 rounded-lg bg-white border border-border/70">
-              <span className="text-content-muted">Worker Social Security / Health:</span>
-              <span className="font-semibold text-content-muted">₹0 (Zero cover)</span>
+            <div className="flex justify-between p-3 rounded-xl bg-white border border-[rgba(18,19,22,0.06)]">
+              <span className="text-[#66676E]">Worker Social Security & Health:</span>
+              <span className="font-semibold text-[#66676E]">₹0 (Zero cover)</span>
             </div>
 
-            <div className="pt-2 border-t border-border/80 flex justify-between items-center text-xs font-semibold">
-              <span className="text-content">Final Worker Take-Home:</span>
-              <span className="text-content text-sm font-bold">₹{privateWorkerNet}</span>
+            <div className="pt-2 border-t border-[rgba(18,19,22,0.08)] flex justify-between items-center text-xs font-medium">
+              <span className="text-[#121316]">Final Worker Take-Home:</span>
+              <span className="font-serif text-lg font-bold text-[#121316]">₹{privateWorkerNet}</span>
             </div>
           </div>
         </div>
 
         {/* ShramSetu Cooperative (Dignified) */}
-        <div className="rounded-xl p-5 bg-white border border-emerald-300 space-y-4 shadow-subtle">
+        <div className="rounded-2xl p-6 bg-white border-2 border-[#0D2F28]/30 space-y-4 shadow-subtle">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2 text-emerald-900 font-semibold text-xs sm:text-sm">
-              <CheckCircle2 className="w-5 h-5 text-emerald-600" />
-              <span>ShramSetu Cooperative Network</span>
+            <div className="flex items-center gap-2 text-[#0D2F28] font-semibold text-xs sm:text-sm">
+              <CheckCircle2 className="w-5 h-5 text-[#0D2F28]" />
+              <span>ShramSetu Cooperative Model</span>
             </div>
-            <span className="text-[10px] bg-emerald-50 text-emerald-800 font-medium px-2 py-0.5 rounded border border-emerald-200">
-              100% Protected Wage
+            <span className="text-[10px] bg-[#EBF5F0] text-[#0D2F28] font-semibold px-2.5 py-0.5 rounded-full border border-[#CCE6DA]">
+              100% Protected Floor
             </span>
           </div>
 
           <div className="space-y-2 text-xs">
-            <div className="flex justify-between p-2.5 rounded-lg bg-surface-subtle border border-border/70">
-              <span className="text-content-muted">Customer Fair Price (No hidden surge):</span>
-              <span className="font-semibold text-content">₹{shramSetuCustomerTotal}</span>
+            <div className="flex justify-between p-3 rounded-xl bg-[#FBF9F5] border border-[rgba(18,19,22,0.06)]">
+              <span className="text-[#66676E]">Customer Fair Price (No surge):</span>
+              <span className="font-semibold text-[#121316]">₹{shramSetuCustomerTotal}</span>
             </div>
 
-            <div className="flex justify-between p-2.5 rounded-lg bg-surface-subtle border border-border/70">
-              <span className="text-content-muted">Protected Worker Take-Home:</span>
-              <span className="font-bold text-emerald-800 text-sm">₹{shramSetuWorkerWage}</span>
+            <div className="flex justify-between p-3 rounded-xl bg-[#FBF9F5] border border-[rgba(18,19,22,0.06)]">
+              <span className="text-[#66676E]">Protected Worker Take-Home:</span>
+              <span className="font-serif text-lg font-bold text-[#0D2F28]">₹{shramSetuWorkerWage}</span>
             </div>
 
-            <div className="flex justify-between p-2.5 rounded-lg bg-surface-subtle border border-border/70">
-              <span className="text-content-muted flex items-center gap-1 font-medium">
-                <HeartHandshake className="w-3.5 h-3.5 text-emerald-600" />
+            <div className="flex justify-between p-3 rounded-xl bg-[#FBF9F5] border border-[rgba(18,19,22,0.06)]">
+              <span className="text-[#66676E] flex items-center gap-1.5 font-medium">
+                <HeartHandshake className="w-3.5 h-3.5 text-[#0D2F28]" />
                 <span>Co-op Healthcare & Emergency Pool:</span>
               </span>
-              <span className="font-semibold text-content">₹{shramSetuCoopPool}</span>
+              <span className="font-semibold text-[#121316]">₹{shramSetuCoopPool}</span>
             </div>
 
-            <div className="pt-2 border-t border-border/80 flex justify-between items-center text-xs font-semibold text-emerald-900">
-              <span>Worker Gains vs Commercial:</span>
-              <span className="text-emerald-800 font-bold text-sm flex items-center gap-1">
-                <TrendingUp className="w-3.5 h-3.5" />
+            <div className="pt-2 border-t border-[rgba(18,19,22,0.08)] flex justify-between items-center text-xs font-semibold text-[#0D2F28]">
+              <span>Worker Advantage vs Commercial:</span>
+              <span className="font-serif text-base font-bold flex items-center gap-1 text-[#0D2F28]">
+                <TrendingUp className="w-4 h-4" />
                 <span>+₹{shramSetuWorkerWage - privateWorkerNet} Extra Cash</span>
               </span>
             </div>
@@ -136,8 +136,8 @@ export const WageComparisonCalculator: React.FC = () => {
 
       </div>
 
-      <div className="text-center pt-1">
-        <p className="text-xs text-content-muted font-medium">
+      <div className="text-center pt-2">
+        <p className="text-xs text-[#66676E] font-light max-w-xl mx-auto">
           Under ShramSetu, household citizens pay fair rates and workers retain their full livelihood dignity with collective healthcare.
         </p>
       </div>
